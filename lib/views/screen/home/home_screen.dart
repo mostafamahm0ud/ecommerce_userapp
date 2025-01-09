@@ -1,0 +1,29 @@
+import 'package:ecommerce_userapp/controller/home_screen_controller.dart';
+import 'package:ecommerce_userapp/core/constant/colors.dart';
+import 'package:ecommerce_userapp/views/widget/home/custom_bottom_appbar.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(HomeScreenControllerImp());
+    return GetBuilder<HomeScreenControllerImp>(builder: (controller) {
+      return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: AppColors.primaryColor,
+          child: Icon(
+            Icons.shopping_cart,
+            color: AppColors.gray,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: CustomBottomAppBar(),
+        body: controller.pages.elementAt(controller.currentPage),
+      );
+    });
+  }
+}
