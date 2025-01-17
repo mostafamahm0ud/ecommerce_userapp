@@ -10,10 +10,10 @@ import 'package:ecommerce_userapp/views/screen/Auth/success_sign_up_screen.dart'
 import 'package:ecommerce_userapp/views/screen/Auth/forget_password/verify_code_screen.dart';
 import 'package:ecommerce_userapp/views/screen/category_screen.dart';
 import 'package:ecommerce_userapp/views/screen/home/home_screen.dart';
+import 'package:ecommerce_userapp/views/screen/item_details_screen.dart';
 import 'package:ecommerce_userapp/views/screen/onboarding_screen.dart';
-import 'package:ecommerce_userapp/views/screen/products_screen.dart';
+import 'package:ecommerce_userapp/views/screen/items_screen.dart';
 import 'package:ecommerce_userapp/views/screen/select_language_screen.dart';
-import 'package:ecommerce_userapp/views/screen/test.dart';
 // import 'package:ecommerce_userapp/views/screen/test.dart';
 import 'package:get/get.dart';
 
@@ -68,8 +68,12 @@ List<GetPage<dynamic>>? route = [
     page: () => const CategoryScreen(),
   ),
   GetPage(
-    name: AppRoutes.products,
-    page: () => const ProductsScreen(),
+    name: AppRoutes.items,
+    page: () => const ItemsScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.itemsDetails,
+    page: () => const ItemDetailsScreen(),
   ),
   // GetPage(
   //   name: AppRoutes.test,

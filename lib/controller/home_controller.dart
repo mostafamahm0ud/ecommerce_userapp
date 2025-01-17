@@ -3,17 +3,17 @@ import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
 import 'package:ecommerce_userapp/core/services/services.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/Home/home_data.dart';
-import 'package:ecommerce_userapp/data/model/categories_model.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
   initialData();
   getData();
   goToCategoriesScreen();
-  goToProductsScreen(List categories, int slectedCategoryIndex);
+  goToProductsScreen(List categories, int slectedCategoryIndex,String categoryId);
 }
 
 class HomeControllerImp extends HomeController {
+  late String language;
   MyServices myServices = Get.find();
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   HomeData homeData = HomeData(Get.find());
@@ -30,6 +30,7 @@ class HomeControllerImp extends HomeController {
     // userEmail = myServices.sharedPreferences.getString("email");
     // userPhone = myServices.sharedPreferences.getString("phone");
     // userName = myServices.sharedPreferences.getString("userName");
+    language = myServices.sharedPreferences.getString("language")!;
   }
 
   @override
@@ -51,8 +52,7 @@ class HomeControllerImp extends HomeController {
       if (response['status'] == "success") {
         categories.addAll(response['categories']);
         items.addAll(response['items']);
-        print("categories.length = ${categories.length}" +
-            "items.length = ${items.length}");
+        print("categories.length = ${categories.length}" "items.length = ${items.length}");
       } else {
         Get.defaultDialog(
             title: "warning", middleText: "there is an error in the server");
@@ -68,10 +68,11 @@ class HomeControllerImp extends HomeController {
   }
 
   @override
-  goToProductsScreen(categories, slectedCategoryIndex) {
-    Get.toNamed(AppRoutes.products, arguments: {
+  goToProductsScreen(categories, slectedCategoryIndex,categoryId) {
+    Get.toNamed(AppRoutes.items, arguments: {
       "categories": categories,
       "slectedCategoryIndex": slectedCategoryIndex ,
+      "categoryId" :categoryId,
     });
   }
 }

@@ -1,11 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_userapp/api_links.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductCardHome extends StatelessWidget {
-  const ProductCardHome({
+class ItemCardHome extends StatelessWidget {
+  const ItemCardHome({
     super.key,
     required this.item,
   });
@@ -14,35 +14,29 @@ class ProductCardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-
       elevation: 0,
       color: Colors.transparent,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         spacing: 8,
         children: [
-          Image.network(
-            "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
+          CachedNetworkImage(
+            imageUrl: "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
             fit: BoxFit.cover,
-            height: 130,
+            height: 110,
+          ),
+          Text(
+            item.itemsName!,
+            style: AppTextStyles.bodyContent16Black,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.itemsName!,
-                    style: AppTextStyles.bodyContent16Black,
-                  ),
-                  Text(
-                    "Price: ${item.itemsPrice!}\$",
-                    style: AppTextStyles.bodyContent16Gray,
-                  ),
-                ],
+              Text(
+                "Price: ${item.itemsPrice!}\$",
+                style: AppTextStyles.bodyContent16Gray,
               ),
               IconButton(
                 onPressed: () {},

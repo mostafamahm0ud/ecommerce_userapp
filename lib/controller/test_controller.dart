@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 abstract class TestController extends GetxController {
   getData();
+  @override
   onInit();
 }
 

@@ -1,8 +1,8 @@
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:flutter/material.dart';
 
-class HomeSearchNavBar extends StatelessWidget {
-  const HomeSearchNavBar({
+class CustomSearchNavBar extends StatelessWidget {
+  const CustomSearchNavBar({
     super.key,required this.onPressedSearch, this.onPressedNotification,
   });
   final void Function()? onPressedSearch;

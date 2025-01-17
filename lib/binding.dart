@@ -8,6 +8,8 @@ import 'package:ecommerce_userapp/controller/forgetPassword/success_reset_passwo
 import 'package:ecommerce_userapp/controller/forgetPassword/verify_code_reset_controller.dart';
 import 'package:ecommerce_userapp/controller/home_controller.dart';
 import 'package:ecommerce_userapp/controller/home_screen_controller.dart';
+import 'package:ecommerce_userapp/controller/itemDeteils_controller.dart';
+import 'package:ecommerce_userapp/controller/item_controller.dart';
 import 'package:ecommerce_userapp/controller/test_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_crud_operations.dart';
 import 'package:get/get.dart';
@@ -26,6 +28,8 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => SuccessResetPasswordControllerImp(), fenix: true);
     Get.lazyPut(() => HomeControllerImp(), fenix: true);
     Get.lazyPut(() => HomeScreenControllerImp(), fenix: true);
+    Get.lazyPut(() => ItemControllerImp(), fenix: true);
+    Get.lazyPut(() => ItemDeteilsControllerImp(), fenix: true);
     Get.lazyPut(() => TestControllerImp(), fenix: true);
   }
 }

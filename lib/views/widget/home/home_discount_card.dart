@@ -1,10 +1,14 @@
+import 'package:ecommerce_userapp/controller/home_controller.dart';
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class DiscountCard extends StatelessWidget {
+class DiscountCard extends GetView<HomeControllerImp> {
   const DiscountCard({
-    super.key, required this.title, required this.subtitle,
+    super.key,
+    required this.title,
+    required this.subtitle,
   });
 
   final String title;
@@ -35,7 +39,8 @@ class DiscountCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: -20,
+            right: controller.language == "en" ? -20 : null,
+            left: controller.language == "ar" ? -20 : null,
             top: -12,
             child: Container(
               height: 150,
@@ -47,7 +52,8 @@ class DiscountCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: -20,
+            right: controller.language == "en" ? -20 : null,
+            left: controller.language == "ar" ? -20 : null,
             top: -7.5,
             child: Container(
               height: 120,

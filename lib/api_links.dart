@@ -25,4 +25,5 @@ class ApiLinks {
 
   // ============== Categories Endpoints================= //
   static const String getCategoriesEndpoint = '$baseUrl/categories/view.php';
+  static const String getItemsEndpoint = '$baseUrl/items/items.php';
 }

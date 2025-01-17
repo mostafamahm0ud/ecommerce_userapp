@@ -29,7 +29,7 @@ class OnBoardingScreen extends StatelessWidget {
                   CustomDotController(),
                   Spacer(flex: 2),
                   CustomOnBoardingButton(
-                    buttonTo: "Conuntinue",
+                    buttonTo: "Conuntinue".tr,
                     color: AppColors.primaryColor,
                   ),
                   CustomOnBoardingButton(

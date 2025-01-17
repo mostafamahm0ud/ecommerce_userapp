@@ -1,7 +1,7 @@
 import 'package:ecommerce_userapp/controller/home_controller.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
-import 'package:ecommerce_userapp/views/widget/home/product_card.dart';
+import 'package:ecommerce_userapp/views/widget/home/Item_card_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,7 +41,7 @@ class ProductHomeListView extends GetView<HomeControllerImp> {
               ItemModel item = ItemModel.fromJson(controller.items[index]);
               return Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: ProductCardHome(
+                child: ItemCardHome(
                   item: item,
                 ),
               );
