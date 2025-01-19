@@ -29,10 +29,13 @@ class ItemCard extends GetView<ItemControllerImp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             spacing: 8,
             children: [
-              CachedNetworkImage(
-                imageUrl: "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
-                fit: BoxFit.cover,
-                height: 100,
+              Hero(
+                tag: "${item.itemsId}",
+                child: CachedNetworkImage(
+                  imageUrl: "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
+                  fit: BoxFit.cover,
+                  height: 100,
+                ),
               ),
               Text(
                 item.itemsName!,

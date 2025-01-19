@@ -7,6 +7,23 @@ abstract class ItemDeteilsController extends GetxController {
 
 class ItemDeteilsControllerImp extends ItemDeteilsController {
   late ItemModel itemModel;
+  List subItems = [
+    {
+      "id": 1,
+      "name": "item 1",
+      "active": 1,
+    },
+    {
+      "id": 2,
+      "name": "item 2",
+      "active": 0,
+    },
+    {
+      "id": 3,
+      "name": "item 3",
+      "active": 0,
+    },
+  ];
   @override
   void onInit() {
     initilData();
