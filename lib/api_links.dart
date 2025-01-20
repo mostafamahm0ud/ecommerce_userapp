@@ -2,8 +2,7 @@ class ApiLinks {
   static const String baseUrl = 'http://localhost/ecommerce';
   static const String baseUrlconnect = '$baseUrl/conect.php';
   // static const String baseUrl = 'https://apitest.torra.online';
-  static const String imageBaseUrl =
-      '$baseUrl/upload';
+  static const String imageBaseUrl = '$baseUrl/upload';
   //============== image Endpoints=================
   static const String imageCategoriesEndpoint = '$imageBaseUrl/categories';
   static const String imageProductEndpoint = '$imageBaseUrl/items';
@@ -25,5 +24,12 @@ class ApiLinks {
 
   // ============== Categories Endpoints================= //
   static const String getCategoriesEndpoint = '$baseUrl/categories/view.php';
+
+  // ============== Items Endpoints================= //
   static const String getItemsEndpoint = '$baseUrl/items/items.php';
+
+  // ============= Favorite Endpoints================= //
+  static const String favoriteEndpoint = '$baseUrl/favorite/view.php';
+  static const String addfavoriteEndpoint = '$baseUrl/favorite/add.php';
+  static const String redmovefavoriteEndpoint = '$baseUrl/favorite/remove.php';
 }

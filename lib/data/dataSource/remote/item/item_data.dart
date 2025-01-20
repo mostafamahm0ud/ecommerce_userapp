@@ -5,9 +5,10 @@ class ItemData {
   ApiCrudOperationsModel apiCrudOperationsModel;
 
   ItemData(this.apiCrudOperationsModel);
-  postData(String id) async {
-    var response = await apiCrudOperationsModel
-        .postData(ApiLinks.getItemsEndpoint, {"id": id});
+  postData(String categoryid, String userid) async {
+    var response = await apiCrudOperationsModel.postData(
+        ApiLinks.getItemsEndpoint,
+        {"categoryid": categoryid, "userid": userid});
     return response.fold((l) => l, (r) => r);
   }
 }

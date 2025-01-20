@@ -32,15 +32,11 @@ class ItemCardHome extends StatelessWidget {
             style: AppTextStyles.bodyContent16Black,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 "Price: ${item.itemsPrice!}\$",
                 style: AppTextStyles.bodyContent16Gray,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.favorite_border),
               ),
             ],
           ),

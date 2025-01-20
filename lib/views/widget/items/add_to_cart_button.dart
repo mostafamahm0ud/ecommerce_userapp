@@ -1,11 +1,11 @@
-
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:flutter/material.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({
-    super.key,required this.addToCart,
+    super.key,
+    required this.addToCart,
   });
   final void Function()? addToCart;
 
@@ -20,10 +20,19 @@ class AddToCartButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Text(
-          "Add to cart",
-          textAlign: TextAlign.center,
-          style: AppTextStyles.bodyContent16White,
+        child: Row(
+          children: [
+            Text(
+              "Add to cart",
+              textAlign: TextAlign.center,
+              style: AppTextStyles.bodyContent16White,
+            ),
+            Icon(
+              Icons.add_shopping_cart_outlined,
+              color: Colors.white,
+              size: 20,
+            )
+          ],
         ),
       ),
     );

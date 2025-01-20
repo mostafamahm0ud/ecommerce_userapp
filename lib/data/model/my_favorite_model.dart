@@ -1,5 +1,8 @@
-class ItemModel {
-  ItemModel({
+class MyFavoriteModel {
+  MyFavoriteModel({
+    required this.favoriteId,
+    required this.favoriteUsersid,
+    required this.favoriteItemsid,
     required this.itemsId,
     required this.itemsName,
     required this.itemsNameAr,
@@ -12,25 +15,31 @@ class ItemModel {
     required this.itemsDiscount,
     required this.itemsDatatime,
     required this.itemsCategories,
-    required this.fevorite,
+    required this.usersId,
   });
 
+  final int? favoriteId;
+  final int? favoriteUsersid;
+  final int? favoriteItemsid;
   final int? itemsId;
   final String? itemsName;
   final String? itemsNameAr;
   final String? itemsDescribtion;
   final String? itemsDescribtionAr;
   final String? itemsImage;
-  final num? fevorite;
   final num? itemsCount;
   final num? itemsActive;
   final num? itemsPrice;
   final num? itemsDiscount;
   final DateTime? itemsDatatime;
   final num? itemsCategories;
+  final int? usersId;
 
-  factory ItemModel.fromJson(Map<String, dynamic> json) {
-    return ItemModel(
+  factory MyFavoriteModel.fromJson(Map<String, dynamic> json) {
+    return MyFavoriteModel(
+      favoriteId: json["favorite_id"],
+      favoriteUsersid: json["favorite_usersid"],
+      favoriteItemsid: json["favorite_itemsid"],
       itemsId: json["items_id"],
       itemsName: json["items_name"],
       itemsNameAr: json["items_name_ar"],
@@ -43,11 +52,14 @@ class ItemModel {
       itemsDiscount: json["items_discount"],
       itemsDatatime: DateTime.tryParse(json["items_datatime"] ?? ""),
       itemsCategories: json["items_categories"],
-      fevorite: json["favorite"],
+      usersId: json["users_id"],
     );
   }
 
   Map<String, dynamic> toJson() => {
+        "favorite_id": favoriteId,
+        "favorite_usersid": favoriteUsersid,
+        "favorite_itemsid": favoriteItemsid,
         "items_id": itemsId,
         "items_name": itemsName,
         "items_name_ar": itemsNameAr,
@@ -60,6 +72,6 @@ class ItemModel {
         "items_discount": itemsDiscount,
         "items_datatime": itemsDatatime?.toIso8601String(),
         "items_categories": itemsCategories,
-        "favorite": fevorite,
+        "users_id": usersId,
       };
 }

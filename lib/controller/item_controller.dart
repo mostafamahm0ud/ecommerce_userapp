@@ -1,6 +1,7 @@
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
+import 'package:ecommerce_userapp/core/services/services.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/item/item_data.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,7 @@ class ItemControllerImp extends ItemController {
   List categories = [];
   int? selectedCategoryIndex;
   String? catId;
+  MyServices myServices = Get.find();
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   List items = [];
   ItemData itemData = ItemData(Get.find());
@@ -46,7 +48,9 @@ class ItemControllerImp extends ItemController {
     items.clear();
     apiStatusRequest = ApiStatusRequest.loading;
     update();
-    var response = await itemData.postData(categoryId);
+    var response = await itemData.postData(categoryId, "4"
+        //  myServices.sharedPreferences.getString("id")!
+        );
     print("=================== Controller $response");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {

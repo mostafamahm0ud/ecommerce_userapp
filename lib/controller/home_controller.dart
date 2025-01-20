@@ -9,6 +9,7 @@ abstract class HomeController extends GetxController {
   initialData();
   getData();
   goToCategoriesScreen();
+  goToMyFavoriteScreen();
   goToProductsScreen(List categories, int slectedCategoryIndex,String categoryId);
 }
 
@@ -65,6 +66,10 @@ class HomeControllerImp extends HomeController {
   @override
   goToCategoriesScreen() {
     Get.toNamed(AppRoutes.categories, arguments: {"categories": categories});
+  }
+  @override
+  goToMyFavoriteScreen() {
+    Get.toNamed(AppRoutes.myFavorite);
   }
 
   @override

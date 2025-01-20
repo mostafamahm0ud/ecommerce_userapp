@@ -1,4 +1,5 @@
 import 'package:ecommerce_userapp/api_links.dart';
+import 'package:ecommerce_userapp/controller/favorite_controller.dart';
 import 'package:ecommerce_userapp/controller/item_controller.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
@@ -32,7 +33,8 @@ class ItemCard extends GetView<ItemControllerImp> {
               Hero(
                 tag: "${item.itemsId}",
                 child: CachedNetworkImage(
-                  imageUrl: "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
+                  imageUrl:
+                      "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
                   fit: BoxFit.cover,
                   height: 100,
                 ),
@@ -59,7 +61,7 @@ class ItemCard extends GetView<ItemControllerImp> {
                           5,
                           (index) => Icon(
                             Icons.star,
-                            color: Colors.amber,
+                            // color: Colors.amber,
                             size: 16,
                           ),
                         ),
@@ -78,10 +80,25 @@ class ItemCard extends GetView<ItemControllerImp> {
                     "Price: ${item.itemsPrice!}\$",
                     style: AppTextStyles.bodyContent20Black,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.favorite_border),
-                  ),
+                  GetBuilder<FavoriteControllerImp>(builder: (conrtrollerfav) {
+                    return IconButton(
+                      onPressed: () {
+                        if (conrtrollerfav.favorite[item.itemsId.toString()] == "1") {
+                          conrtrollerfav.updateFavorite(item.itemsId.toString(), "0");
+                          conrtrollerfav
+                              .removeFromFavorite(item.itemsId.toString());
+                        } else {
+                          conrtrollerfav.updateFavorite(item.itemsId.toString(), "1");
+                          conrtrollerfav.addToFavorite(item.itemsId.toString());
+                        }
+                      },
+                      icon: Icon(
+                          conrtrollerfav.favorite[item.itemsId.toString()] == "1"
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: Colors.red),
+                    );
+                  }),
                 ],
               ),
             ],

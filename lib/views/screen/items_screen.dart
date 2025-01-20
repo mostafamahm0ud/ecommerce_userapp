@@ -20,6 +20,7 @@ class ItemsScreen extends StatelessWidget {
           CustomSearchNavBar(
             onPressedSearch: () {},
             onPressedNotification: () {},
+            onPressedFavorite: () {},
           ),
           SizedBox(height: 8),
           ListCategoriesItem(),

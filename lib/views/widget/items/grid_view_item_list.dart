@@ -1,3 +1,4 @@
+import 'package:ecommerce_userapp/controller/favorite_controller.dart';
 import 'package:ecommerce_userapp/controller/item_controller.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:ecommerce_userapp/views/widget/items/item_card.dart';
@@ -9,6 +10,7 @@ class GridViewItemList extends GetView<ItemControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    FavoriteControllerImp controllerfav = Get.find<FavoriteControllerImp>();
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -20,8 +22,12 @@ class GridViewItemList extends GetView<ItemControllerImp> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: controller.items.length,
       itemBuilder: (context, index) {
+        controllerfav.favorite[controller.items[index]["items_id"]] =
+            controller.items[index]["favorite"];
         return ItemCard(
-          item: ItemModel.fromJson(controller.items[index]),
+          item: ItemModel.fromJson(
+            controller.items[index],
+          ),
         );
       },
     );

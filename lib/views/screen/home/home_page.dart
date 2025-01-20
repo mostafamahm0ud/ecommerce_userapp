@@ -27,6 +27,9 @@ class HomePage extends StatelessWidget {
                           CustomSearchNavBar(
                             onPressedSearch: () {},
                             onPressedNotification: () {},
+                            onPressedFavorite: () {
+                              controller.goToMyFavoriteScreen();
+                            },
                           ),
                           DiscountCard(
                             title: 'summer sale',

@@ -1,6 +1,6 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_userapp/api_links.dart';
+import 'package:ecommerce_userapp/controller/favorite_controller.dart';
 import 'package:ecommerce_userapp/controller/itemDeteils_controller.dart';
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
   const ImageAndItemName({
     super.key,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +48,39 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
               Get.back();
             },
             icon: Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_sharp,
+              color: AppColors.white,
+              size: 30,
             ),
           ),
         ),
-        Positioned(
-          right: 10,
-          top: 10,
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.favorite_border,
+        GetBuilder<FavoriteControllerImp>(builder: (controllerfav) {
+          return Positioned(
+            right: 10,
+            top: 10,
+            child: IconButton(
+              onPressed: () {
+                if (controllerfav.favorite[controller.itemModel.itemsId.toString()] ==
+                    "1") {
+                  controllerfav.favorite[controller.itemModel.itemsId.toString()] = "0";
+                  controllerfav.removeFromFavorite(
+                      controller.itemModel.itemsId.toString());
+                } else {
+                  controllerfav.favorite[controller.itemModel.itemsId.toString()] = "1";
+                  controllerfav
+                      .addToFavorite(controller.itemModel.itemsId.toString());
+                }
+              },
+              icon: Icon(
+                controllerfav.favorite[controller.itemModel.itemsId.toString()] == "1"
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                color: Colors.red,
+                size: 30,
+              ),
             ),
-          ),
-        ),
+          );
+        }),
       ],
     );
   }
