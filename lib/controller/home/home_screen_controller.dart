@@ -1,4 +1,5 @@
 import 'package:ecommerce_userapp/views/screen/home/home_page.dart';
+import 'package:ecommerce_userapp/views/screen/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,19 +12,17 @@ class HomeScreenControllerImp extends HomeScreenController {
   List<Widget> pages = [
     HomePage(),
     Center(
-      child: Text('Favorite'),
+      child: Text('Notifications'),
     ),
     Center(
       child: Text('Profile'),
     ),
-    Center(
-      child: Text('Settings'),
-    ),
+    SettingsScreen(),
   ];
 
   List bottomAppBarItems = [
     Icons.home,
-    Icons.favorite,
+    Icons.notifications,
     Icons.person,
     Icons.settings,
   ];

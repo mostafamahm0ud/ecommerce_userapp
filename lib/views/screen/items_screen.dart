@@ -1,4 +1,4 @@
-import 'package:ecommerce_userapp/controller/item_controller.dart';
+import 'package:ecommerce_userapp/controller/item/item_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_manage_statuts_view.dart';
 import 'package:ecommerce_userapp/views/widget/custom_navbar.dart';
 import 'package:ecommerce_userapp/views/widget/items/grid_view_item_list.dart';
@@ -17,11 +17,9 @@ class ItemsScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListView(
         children: [
-          CustomSearchNavBar(
-            onPressedSearch: () {},
-            onPressedNotification: () {},
-            onPressedFavorite: () {},
-          ),
+          // CustomSearchNavBar(
+          //   onPressedSearch: () {},
+          // ),
           SizedBox(height: 8),
           ListCategoriesItem(),
           SizedBox(height: 8),

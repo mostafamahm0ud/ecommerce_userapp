@@ -5,9 +5,15 @@ class HomeData {
   ApiCrudOperationsModel apiCrudOperationsModel;
 
   HomeData(this.apiCrudOperationsModel);
-  postData() async {
+  getData() async {
     var response =
         await apiCrudOperationsModel.postData(ApiLinks.homeEndpoint, {});
+    return response.fold((l) => l, (r) => r);
+  }
+
+  search(String search) async {
+    var response = await apiCrudOperationsModel
+        .postData(ApiLinks.searchItemsEndpoint, {"search": search});
     return response.fold((l) => l, (r) => r);
   }
 }

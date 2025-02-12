@@ -1,5 +1,5 @@
 import 'package:ecommerce_userapp/api_links.dart';
-import 'package:ecommerce_userapp/controller/home_controller.dart';
+import 'package:ecommerce_userapp/controller/home/home_controller.dart';
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/core/function/translate_database.dart';

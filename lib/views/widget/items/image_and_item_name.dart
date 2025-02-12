@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_userapp/api_links.dart';
-import 'package:ecommerce_userapp/controller/favorite_controller.dart';
-import 'package:ecommerce_userapp/controller/itemDeteils_controller.dart';
+import 'package:ecommerce_userapp/controller/favorite/favorite_controller.dart';
+import 'package:ecommerce_userapp/controller/item/itemDeteils_controller.dart';
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +33,7 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
             child: Center(
               child: CachedNetworkImage(
                 imageUrl:
-                    "${ApiLinks.imageProductEndpoint}/${controller.itemModel.itemsImage}",
+                    "${ApiLinks.imageItemsEndpoint}/${controller.itemModel.itemsImage}",
                 fit: BoxFit.cover,
                 height: 200,
               ),

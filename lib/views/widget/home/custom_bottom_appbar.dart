@@ -1,5 +1,5 @@
 
-import 'package:ecommerce_userapp/controller/home_screen_controller.dart';
+import 'package:ecommerce_userapp/controller/home/home_screen_controller.dart';
 import 'package:ecommerce_userapp/views/widget/home/bottom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

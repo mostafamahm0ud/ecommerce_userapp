@@ -1,4 +1,4 @@
-import 'package:ecommerce_userapp/controller/item_controller.dart';
+import 'package:ecommerce_userapp/controller/item/item_controller.dart';
 import 'package:ecommerce_userapp/data/model/categories_model.dart';
 import 'package:ecommerce_userapp/views/widget/items/category_items.dart';
 import 'package:flutter/material.dart';

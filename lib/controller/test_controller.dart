@@ -18,7 +18,7 @@ class TestControllerImp extends TestController {
   getData() async {
     apiStatusRequest = ApiStatusRequest.loading;
     update();
-    var response = await homeData.postData();
+    var response = await homeData.getData();
     print("=============================== Controller $response ");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {

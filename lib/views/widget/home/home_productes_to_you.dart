@@ -1,4 +1,4 @@
-import 'package:ecommerce_userapp/controller/home_controller.dart';
+import 'package:ecommerce_userapp/controller/home/home_controller.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:ecommerce_userapp/views/widget/home/Item_card_home.dart';

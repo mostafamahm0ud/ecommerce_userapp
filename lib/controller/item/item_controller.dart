@@ -48,9 +48,8 @@ class ItemControllerImp extends ItemController {
     items.clear();
     apiStatusRequest = ApiStatusRequest.loading;
     update();
-    var response = await itemData.postData(categoryId, "4"
-        //  myServices.sharedPreferences.getString("id")!
-        );
+    var response = await itemData.postData(
+        categoryId, myServices.sharedPreferences.getString("id")!);
     print("=================== Controller $response");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {

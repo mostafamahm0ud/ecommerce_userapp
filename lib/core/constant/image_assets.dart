@@ -19,4 +19,7 @@ class AppAssets {
   static const String loading = "$lottieAssets/loading.json";
   static const String nodata = "$lottieAssets/nodata.json";
   static const String nointernet = "$lottieAssets/nointernet.json";
+
+  // setting profile image
+  static const String profile = "$rootImages/person.png";
 }

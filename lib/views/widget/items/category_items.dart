@@ -1,4 +1,4 @@
-import 'package:ecommerce_userapp/controller/item_controller.dart';
+import 'package:ecommerce_userapp/controller/item/item_controller.dart';
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/data/model/categories_model.dart';

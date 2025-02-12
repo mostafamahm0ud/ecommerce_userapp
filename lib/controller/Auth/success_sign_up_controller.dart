@@ -8,6 +8,6 @@ abstract class SuccessSignUpController extends GetxController {
 class SuccessSignUpControllerImp extends SuccessSignUpController {
   @override
   goToSignIn() {
-    Get.offNamed(AppRoutes.signIn);
+    Get.offAllNamed(AppRoutes.signIn);
   }
 }

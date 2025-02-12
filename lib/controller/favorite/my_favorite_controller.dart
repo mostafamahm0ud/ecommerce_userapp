@@ -1,27 +1,30 @@
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
+import 'package:ecommerce_userapp/core/services/services.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/favorite/my_favorite_data.dart';
 import 'package:ecommerce_userapp/data/model/my_favorite_model.dart';
 import 'package:get/get.dart';
 
 abstract class MyFavoriteController extends GetxController {
   getMyFavoriteData();
+  deleteFavoriteData(String id);
 }
 
 class MyFavoriteControllerImp extends MyFavoriteController {
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
 
   MyFavoriteData favoriteData = MyFavoriteData(Get.find());
+  MyServices myServices = Get.find();
 
   List<MyFavoriteModel> myFavoriteList = [];
+  
 
   @override
   getMyFavoriteData() async {
     apiStatusRequest = ApiStatusRequest.loading;
     update();
     var response = await favoriteData
-        .getFavoriteData("4" //  myServices.sharedPreferences.getString("id")!
-            );
+        .getFavoriteData(myServices.sharedPreferences.getString("id")!);
     print("=================== Controller $response");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {
@@ -35,6 +38,15 @@ class MyFavoriteControllerImp extends MyFavoriteController {
         apiStatusRequest = ApiStatusRequest.failure;
       }
     }
+    update();
+  }
+
+  @override
+  deleteFavoriteData(id) {
+    favoriteData.deleteFavoriteData(id);
+    myFavoriteList
+        .removeWhere((element) => element.favoriteId.toString() == id);
+    print('myFavoriteList : $myFavoriteList');
     update();
   }
 

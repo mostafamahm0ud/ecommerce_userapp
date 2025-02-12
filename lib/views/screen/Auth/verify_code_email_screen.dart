@@ -24,38 +24,52 @@ class VerfiyCodeSignUpEmailScreen extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
       ),
       body: GetBuilder<VeryfiyCodeSignUpControllerImp>(builder: (controller) {
-        return  ApiManageStatutsRequest(
+        return ApiManageStatutsRequest(
           statusRequest: controller.apiStatusRequest,
           widget: Center(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                    child: ListView(
-                      children: [
-                        CustomAppLogo(),
-                        CustomHeaderAndContantAuth(
-                          header: 'Confirm Email',
-                          content:
-                              'Enter the code that has been sent to\nTest@gmail.com',
-                        ),
-                        OtpTextField(
-                          fieldWidth: 50.0,
-                          numberOfFields: 5,
-                          borderColor: AppColors.primaryColor,
-                          //set to true to show as box or false to show as dash
-                          showFieldAsBox: true,
-                          //runs when a code is typed in
-                          onCodeChanged: (String code) {
-                            //handle validation or checks here
-                          },
-                          //runs when every textfield is filled
-                          onSubmit: (String verificationCode) {
-                            controller.goToSuccessSignUp(verificationCode);
-                          }, // end onSubmit
-                        ),
-                      ],
-                    ),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+              child: ListView(
+                children: [
+                  CustomAppLogo(),
+                  CustomHeaderAndContantAuth(
+                    header: 'Confirm Email',
+                    content:
+                        'Enter the code that has been sent to\n${controller.email}',
                   ),
-                ),
+                  OtpTextField(
+                    fieldWidth: 50.0,
+                    numberOfFields: 5,
+                    borderColor: AppColors.primaryColor,
+                    //set to true to show as box or false to show as dash
+                    showFieldAsBox: true,
+                    //runs when a code is typed in
+                    onCodeChanged: (String code) {
+                      //handle validation or checks here
+                    },
+                    //runs when every textfield is filled
+                    onSubmit: (String verificationCode) {
+                      controller.goToSuccessSignUp(verificationCode);
+                    }, // end onSubmit
+                  ),
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Did not receive the code?',
+                          style: AppTextStyles.bodyContent16Gray),
+                      InkWell(
+                          onTap: () {
+                            controller.reSendEmail();
+                          },
+                          child: Text('Resend Code',
+                              style: AppTextStyles.bodyContent16Primary)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       }),
     );

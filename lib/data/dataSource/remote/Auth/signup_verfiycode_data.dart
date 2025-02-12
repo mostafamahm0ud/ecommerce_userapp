@@ -12,4 +12,12 @@ class SignupVerfiycodeData {
         });
     return response.fold((l) => l, (r) => r);
   }
+
+  reSend(String email)async{
+    var response =
+        await apiCrudOperationsModel.postData(ApiLinks.reSendEmail,{
+          "email": email,
+        });
+    return response.fold((l) => l, (r) => r);
+  }
 }

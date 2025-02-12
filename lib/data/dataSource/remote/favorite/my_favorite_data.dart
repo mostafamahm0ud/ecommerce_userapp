@@ -13,4 +13,12 @@ class MyFavoriteData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  deleteFavoriteData(String favoriteId) async {
+    var response = await apiCrudOperationsModel
+        .postData(ApiLinks.deleteitemfromfavoriteEndpoint, {
+      "id": favoriteId,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

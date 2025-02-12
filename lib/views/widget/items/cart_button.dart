@@ -2,8 +2,8 @@ import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:flutter/material.dart';
 
-class AddToCartButton extends StatelessWidget {
-  const AddToCartButton({
+class CartButton extends StatelessWidget {
+  const CartButton({
     super.key,
     required this.addToCart,
   });

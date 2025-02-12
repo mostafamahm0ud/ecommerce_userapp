@@ -6,15 +6,6 @@ class FavoriteData {
 
   FavoriteData(this.apiCrudOperationsModel);
 
-  
-  getFavoriteData(String userid) async {
-    var response =
-        await apiCrudOperationsModel.postData(ApiLinks.favoriteEndpoint, {
-      "userid": userid,
-    });
-    return response.fold((l) => l, (r) => r);
-  }
-  
   addToFavoriteData(String userid, String itemid) async {
     var response =
         await apiCrudOperationsModel.postData(ApiLinks.addfavoriteEndpoint, {

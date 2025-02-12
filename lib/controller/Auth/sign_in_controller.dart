@@ -16,19 +16,19 @@ abstract class SignInController extends GetxController {
 class SignInControllerImp extends SignInController {
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   SignInData signInData = SignInData(Get.find());
-  MyServices myServices = MyServices();
+  MyServices myServices = Get.find();
   bool isPassword = true;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController password;
   @override
-  isShowPassword(){
+  isShowPassword() {
     isPassword = !isPassword;
     update();
   }
 
   @override
-  signIn()async {
+  signIn() async {
     if (formKey.currentState!.validate()) {
       apiStatusRequest = ApiStatusRequest.loading;
       update();
@@ -39,16 +39,24 @@ class SignInControllerImp extends SignInController {
       apiStatusRequest = handlingRemoteData(response);
       if (apiStatusRequest == ApiStatusRequest.success) {
         if (response['status'] == 'success') {
-          // myServices.sharedPreferences.setString("id", response['data']['users_id']); // save id in shared preferences
-          // myServices.sharedPreferences.setString("email", response['data']['users_email']); // save email in shared preferences
-          // myServices.sharedPreferences.setString("userName", response['data']['users_name']); // save name in shared preferences
-          // myServices.sharedPreferences.setString("phone", response['data']['users_phone']); // save phone in shared preferences
-          // myServices.sharedPreferences.setString("step", "2"); // save step in shared preferences
-          Get.offNamed(AppRoutes.home);
+          if (response['data']['users_approve'] == 1) {
+            myServices.sharedPreferences
+                .setString("id", response['data']['users_id'].toString());
+            myServices.sharedPreferences
+                .setString("email", response['data']['users_email']);
+            myServices.sharedPreferences
+                .setString("userName", response['data']['users_name']);
+            myServices.sharedPreferences
+                .setString("phone", response['data']['users_phone']);
+            myServices.sharedPreferences.setString("step", "2");
+            Get.offNamed(AppRoutes.home);
+          } else {
+            Get.toNamed(AppRoutes.checkSignUpEmail,
+                arguments: {"email": email.text});
+          }
         } else {
           Get.defaultDialog(
-              title: "warning",
-              middleText: "email or password is not correct");
+              title: "warning", middleText: "email or password is not correct");
           apiStatusRequest = ApiStatusRequest.failure;
         }
       }
@@ -58,7 +66,7 @@ class SignInControllerImp extends SignInController {
 
   @override
   goToSignUp() {
-    Get.offNamed(AppRoutes.signUp);
+    Get.toNamed(AppRoutes.signUp);
   }
 
   @override

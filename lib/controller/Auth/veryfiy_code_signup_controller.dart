@@ -5,13 +5,21 @@ import 'package:ecommerce_userapp/data/dataSource/remote/Auth/signup_verfiycode_
 import 'package:get/get.dart';
 
 abstract class VeryfiyCodeSignUpController extends GetxController {
-  void goToSuccessSignUp(String verifyCode);
+  goToSuccessSignUp(String verifyCode);
+  reSendEmail();
 }
 
 class VeryfiyCodeSignUpControllerImp extends VeryfiyCodeSignUpController {
   SignupVerfiycodeData signupVerfiycodeData = SignupVerfiycodeData(Get.find());
-  ApiStatusRequest apiStatusRequest=ApiStatusRequest.none;
+  ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   String? email;
+
+  @override
+  void onInit() {
+    email = Get.arguments['email'];
+    super.onInit();
+  }
+
   @override
   void goToSuccessSignUp(String verifyCode) async {
     apiStatusRequest = ApiStatusRequest.loading;
@@ -31,8 +39,7 @@ class VeryfiyCodeSignUpControllerImp extends VeryfiyCodeSignUpController {
   }
 
   @override
-  void onInit() {
-    email = Get.arguments['email'];
-    super.onInit();
+  reSendEmail() {
+    signupVerfiycodeData.reSend(email!);
   }
 }

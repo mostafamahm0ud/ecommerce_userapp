@@ -1,6 +1,6 @@
 import 'package:ecommerce_userapp/api_links.dart';
-import 'package:ecommerce_userapp/controller/favorite_controller.dart';
-import 'package:ecommerce_userapp/controller/item_controller.dart';
+import 'package:ecommerce_userapp/controller/favorite/favorite_controller.dart';
+import 'package:ecommerce_userapp/controller/item/item_controller.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +34,7 @@ class ItemCard extends GetView<ItemControllerImp> {
                 tag: "${item.itemsId}",
                 child: CachedNetworkImage(
                   imageUrl:
-                      "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
+                      "${ApiLinks.imageItemsEndpoint}/${item.itemsImage}",
                   fit: BoxFit.cover,
                   height: 100,
                 ),

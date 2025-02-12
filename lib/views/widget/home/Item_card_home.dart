@@ -23,7 +23,7 @@ class ItemCardHome extends StatelessWidget {
         spacing: 8,
         children: [
           CachedNetworkImage(
-            imageUrl: "${ApiLinks.imageProductEndpoint}/${item.itemsImage}",
+            imageUrl: "${ApiLinks.imageItemsEndpoint}/${item.itemsImage}",
             fit: BoxFit.cover,
             height: 110,
           ),

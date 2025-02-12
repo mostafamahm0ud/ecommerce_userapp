@@ -1,5 +1,5 @@
-import 'package:ecommerce_userapp/controller/favorite_controller.dart';
-import 'package:ecommerce_userapp/controller/item_controller.dart';
+import 'package:ecommerce_userapp/controller/favorite/favorite_controller.dart';
+import 'package:ecommerce_userapp/controller/item/item_controller.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:ecommerce_userapp/views/widget/items/item_card.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +22,8 @@ class GridViewItemList extends GetView<ItemControllerImp> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: controller.items.length,
       itemBuilder: (context, index) {
-        controllerfav.favorite[controller.items[index]["items_id"]] =
-            controller.items[index]["favorite"];
+        controllerfav.favorite[controller.items[index]["items_id"].toString()] =
+            controller.items[index]["favorite"].toString();
         return ItemCard(
           item: ItemModel.fromJson(
             controller.items[index],

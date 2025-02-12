@@ -18,5 +18,6 @@ class AppRoutes {
   static const String categories = '/categories';
   static const String items = '/items';
   static const String itemsDetails = '/itemsDetails';
-  static const String myFavorite= '/myFavorite';
+  static const String myFavorite = '/myFavorite';
+  static const String cart ='/cart';
 }
