@@ -1,3 +1,4 @@
+import 'package:ecommerce_userapp/controller/search_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
@@ -14,6 +15,7 @@ abstract class ItemController extends GetxController {
 }
 
 class ItemControllerImp extends ItemController {
+  SearchControllerImp searchController = Get.find();
   List categories = [];
   int? selectedCategoryIndex;
   String? catId;

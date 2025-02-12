@@ -25,15 +25,13 @@ class CustomSearchNavBar extends StatelessWidget {
               controller: mycontroller,
               onChanged: onChanged,
               decoration: InputDecoration(
-                filled: true,
                 fillColor: AppColors.grayOpen,
-                hintText: 'Search',
+                hintText: 'Find your favorite Product',
                 prefixIcon: IconButton(
                     onPressed: onPressedSearch,
                     icon: Icon(Icons.search, color: Colors.black)),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
             ),

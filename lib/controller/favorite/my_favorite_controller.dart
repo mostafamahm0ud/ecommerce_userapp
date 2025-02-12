@@ -1,3 +1,4 @@
+import 'package:ecommerce_userapp/controller/search_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
 import 'package:ecommerce_userapp/core/services/services.dart';
@@ -12,6 +13,7 @@ abstract class MyFavoriteController extends GetxController {
 
 class MyFavoriteControllerImp extends MyFavoriteController {
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
+  SearchControllerImp searchController = Get.find();
 
   MyFavoriteData favoriteData = MyFavoriteData(Get.find());
   MyServices myServices = Get.find();

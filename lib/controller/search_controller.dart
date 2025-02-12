@@ -1,7 +1,6 @@
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
-import 'package:ecommerce_userapp/core/services/services.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/Home/home_data.dart';
 import 'package:ecommerce_userapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
