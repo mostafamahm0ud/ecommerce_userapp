@@ -1,4 +1,4 @@
-import 'package:ecommerce_userapp/controller/search_controller.dart';
+import 'package:ecommerce_userapp/controller/home/home_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
@@ -14,13 +14,11 @@ abstract class ItemController extends GetxController {
   goToItemDetails(ItemModel itemModel);
 }
 
-class ItemControllerImp extends ItemController {
-  SearchControllerImp searchController = Get.find();
+class ItemControllerImp extends SearchControllerImp implements ItemController {
   List categories = [];
   int? selectedCategoryIndex;
   String? catId;
   MyServices myServices = Get.find();
-  ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   List items = [];
   ItemData itemData = ItemData(Get.find());
 

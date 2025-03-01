@@ -11,9 +11,9 @@ class HomeData {
     return response.fold((l) => l, (r) => r);
   }
 
-  search(String search) async {
-    var response = await apiCrudOperationsModel
-        .postData(ApiLinks.searchItemsEndpoint, {"search": search});
+  search(String search, String userid) async {
+    var response = await apiCrudOperationsModel.postData(
+        ApiLinks.searchItemsEndpoint, {"search": search, "userid": userid});
     return response.fold((l) => l, (r) => r);
   }
 }

@@ -4,7 +4,7 @@ import 'package:ecommerce_userapp/views/widget/home/home_categories_list_view.da
 import 'package:ecommerce_userapp/views/widget/home/home_discount_card.dart';
 import 'package:ecommerce_userapp/views/widget/custom_navbar.dart';
 import 'package:ecommerce_userapp/views/widget/home/home_productes_to_you.dart';
-import 'package:ecommerce_userapp/views/widget/search_item_list.dart';
+import 'package:ecommerce_userapp/views/widget/search_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,19 +25,29 @@ class HomePage extends StatelessWidget {
                 children: [
                   CustomSearchNavBar(
                     onPressedSearch: () {
-                      controller.searchController.onSearchItem();
+                      controller.onSearchItem();
                     },
                     onChanged: (value) {
-                      controller.searchController.checkSearch(value);
+                      controller.checkSearch(value);
                     },
-                    mycontroller:
-                        controller.searchController.searchControllertext,
+                    mycontroller: controller.searchController,
                   ),
                   ApiManageStatutsRequest(
                     statusRequest: controller.apiStatusRequest,
-                    widget: controller.searchController.isSearch
-                        ? SearchItemList(
-                            items: controller.searchController.searchItems,
+                    widget: controller.isSearch
+                        ? ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: controller.searchItems.length,
+                            itemBuilder: (context, index) {
+                              return SearchCard(
+                                items: controller.searchItems[index],
+                                onTap: () {
+                                  controller.goToItemDetails(
+                                      controller.searchItems[index]);
+                                },
+                              );
+                            },
                           )
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

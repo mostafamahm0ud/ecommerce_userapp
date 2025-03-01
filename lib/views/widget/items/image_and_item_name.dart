@@ -8,9 +8,11 @@ import 'package:get/get.dart';
 
 class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
   const ImageAndItemName({
+    required this.isFav,
     super.key,
   });
 
+  final bool isFav;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -29,13 +31,18 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
         Hero(
           tag: "${controller.itemModel.itemsId}",
           child: Positioned(
-            top: 40,
+            top: 50,
             child: Center(
-              child: CachedNetworkImage(
-                imageUrl:
-                    "${ApiLinks.imageItemsEndpoint}/${controller.itemModel.itemsImage}",
-                fit: BoxFit.cover,
-                height: 200,
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: 20,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      "${ApiLinks.imageItemsEndpoint}/${controller.itemModel.itemsImage}",
+                  fit: BoxFit.scaleDown,
+                  height: 160,
+                ),
               ),
             ),
           ),
@@ -60,19 +67,25 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
             top: 10,
             child: IconButton(
               onPressed: () {
-                if (controllerfav.favorite[controller.itemModel.itemsId.toString()] ==
+                if (controllerfav
+                        .favorite[controller.itemModel.itemsId.toString()] ==
                     "1") {
-                  controllerfav.favorite[controller.itemModel.itemsId.toString()] = "0";
+                  controllerfav
+                      .favorite[controller.itemModel.itemsId.toString()] = "0";
                   controllerfav.removeFromFavorite(
                       controller.itemModel.itemsId.toString());
                 } else {
-                  controllerfav.favorite[controller.itemModel.itemsId.toString()] = "1";
+                  controllerfav
+                      .favorite[controller.itemModel.itemsId.toString()] = "1";
                   controllerfav
                       .addToFavorite(controller.itemModel.itemsId.toString());
                 }
               },
               icon: Icon(
-                controllerfav.favorite[controller.itemModel.itemsId.toString()] == "1"
+                controllerfav.favorite[
+                                controller.itemModel.itemsId.toString()] ==
+                            "1" ||
+                      isFav == true
                     ? Icons.favorite
                     : Icons.favorite_border,
                 color: Colors.red,

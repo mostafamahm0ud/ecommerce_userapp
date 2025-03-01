@@ -13,26 +13,17 @@ class CartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      height: 50,
+      height: 45,
       child: MaterialButton(
         onPressed: addToCart,
         color: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Row(
-          children: [
-            Text(
-              "Add to cart",
-              textAlign: TextAlign.center,
-              style: AppTextStyles.bodyContent16White,
-            ),
-            Icon(
-              Icons.add_shopping_cart_outlined,
-              color: Colors.white,
-              size: 20,
-            )
-          ],
+        child: Text(
+          "Check Out",
+          textAlign: TextAlign.center,
+          style: AppTextStyles.bodyContent16White,
         ),
       ),
     );

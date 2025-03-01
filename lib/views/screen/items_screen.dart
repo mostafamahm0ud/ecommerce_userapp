@@ -3,7 +3,7 @@ import 'package:ecommerce_userapp/core/class/api_manage_statuts_view.dart';
 import 'package:ecommerce_userapp/views/widget/custom_navbar.dart';
 import 'package:ecommerce_userapp/views/widget/items/grid_view_item_list.dart';
 import 'package:ecommerce_userapp/views/widget/items/list_category_items.dart';
-import 'package:ecommerce_userapp/views/widget/search_item_list.dart';
+import 'package:ecommerce_userapp/views/widget/search_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,12 +20,12 @@ class ItemsScreen extends GetView<ItemControllerImp> {
         children: [
           CustomSearchNavBar(
             onPressedSearch: () {
-              controller.searchController.onSearchItem();
+              controller.onSearchItem();
             },
             onChanged: (value) {
-              controller.searchController.checkSearch(value);
+              controller.checkSearch(value);
             },
-            mycontroller: controller.searchController.searchControllertext,
+            mycontroller: controller.searchController,
           ),
           SizedBox(height: 8),
           ListCategoriesItem(),
@@ -33,9 +33,20 @@ class ItemsScreen extends GetView<ItemControllerImp> {
           GetBuilder<ItemControllerImp>(builder: (controller) {
             return ApiManageStatutsRequest(
                 statusRequest: controller.apiStatusRequest,
-                widget: controller.searchController.isSearch
-                    ? SearchItemList(
-                        items: controller.searchController.searchItems,
+                widget: controller.isSearch
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.searchItems.length,
+                        itemBuilder: (context, index) {
+                          return SearchCard(
+                            items: controller.searchItems[index],
+                            onTap: () {
+                              controller.goToItemDetails(
+                                  controller.searchItems[index]);
+                            },
+                          );
+                        },
                       )
                     : GridViewItemList());
           }),

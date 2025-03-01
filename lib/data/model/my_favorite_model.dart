@@ -12,6 +12,7 @@ class MyFavoriteModel {
     required this.itemsCount,
     required this.itemsActive,
     required this.itemsPrice,
+    required this.itemsPriceDiscount,
     required this.itemsDiscount,
     required this.itemsDatatime,
     required this.itemsCategories,
@@ -30,6 +31,7 @@ class MyFavoriteModel {
   final num? itemsCount;
   final num? itemsActive;
   final num? itemsPrice;
+  final num? itemsPriceDiscount;
   final num? itemsDiscount;
   final DateTime? itemsDatatime;
   final num? itemsCategories;
@@ -49,6 +51,7 @@ class MyFavoriteModel {
       itemsCount: json["items_count"],
       itemsActive: json["items_active"],
       itemsPrice: json["items_price"],
+      itemsPriceDiscount: json["itempricediscount"],
       itemsDiscount: json["items_discount"],
       itemsDatatime: DateTime.tryParse(json["items_datatime"] ?? ""),
       itemsCategories: json["items_categories"],
@@ -69,6 +72,7 @@ class MyFavoriteModel {
         "items_count": itemsCount,
         "items_active": itemsActive,
         "items_price": itemsPrice,
+        "itempricediscount": itemsPriceDiscount,
         "items_discount": itemsDiscount,
         "items_datatime": itemsDatatime?.toIso8601String(),
         "items_categories": itemsCategories,

@@ -42,4 +42,10 @@ class ApiLinks {
   static const String addItemCartEndpoint = '$baseUrl/cart/add.php';
   static const String removeItemCartEndpoint = '$baseUrl/cart/delete.php';
   static const String countItemCartEndpoint = '$baseUrl/cart/count.php';
+
+  // ============= Address Endpoints================= //
+  static const String addAddressEndpoint = '$baseUrl/address/add.php';
+  static const String viewAddressEndpoint = '$baseUrl/address/view.php';
+  static const String deleteAddressEndpoint = '$baseUrl/address/delete.php';
+  static const String editAddressEndpoint = '$baseUrl/address/edit.php';
 }

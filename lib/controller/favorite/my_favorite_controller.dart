@@ -1,7 +1,6 @@
-import 'package:ecommerce_userapp/controller/search_controller.dart';
+import 'package:ecommerce_userapp/controller/home/home_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
-import 'package:ecommerce_userapp/core/services/services.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/favorite/my_favorite_data.dart';
 import 'package:ecommerce_userapp/data/model/my_favorite_model.dart';
 import 'package:get/get.dart';
@@ -11,15 +10,10 @@ abstract class MyFavoriteController extends GetxController {
   deleteFavoriteData(String id);
 }
 
-class MyFavoriteControllerImp extends MyFavoriteController {
-  ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
-  SearchControllerImp searchController = Get.find();
-
+class MyFavoriteControllerImp extends SearchControllerImp
+    implements MyFavoriteController {
   MyFavoriteData favoriteData = MyFavoriteData(Get.find());
-  MyServices myServices = Get.find();
-
   List<MyFavoriteModel> myFavoriteList = [];
-  
 
   @override
   getMyFavoriteData() async {

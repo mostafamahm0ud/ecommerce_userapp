@@ -1,9 +1,10 @@
-import 'package:ecommerce_userapp/controller/search_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_status_request.dart';
 import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
 import 'package:ecommerce_userapp/core/services/services.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/Home/home_data.dart';
+import 'package:ecommerce_userapp/data/model/items_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
@@ -14,34 +15,14 @@ abstract class HomeController extends GetxController {
       List categories, int slectedCategoryIndex, String categoryId);
 }
 
-class HomeControllerImp extends HomeController {
-  SearchControllerImp searchController = Get.find<SearchControllerImp>();
+class HomeControllerImp extends SearchControllerImp implements HomeController {
   late String language;
-  MyServices myServices = Get.find();
-  ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
-  HomeData homeData = HomeData(Get.find());
   List categories = [];
   List items = [];
   String? userName;
   String? userId;
   String? userEmail;
   String? userPhone;
-  // TextEditingController? searchController;
-  // bool isSearch = false;
-  // List<ItemModel> searchItems = [];
-
-  // checkSearch(value) {
-  //   if (value.isEmpty) {
-  //     isSearch = false;
-  //   }
-  //   update();
-  // }
-
-  // onSearchItem() {
-  //   isSearch = true;
-  //   searchData();
-  //   update();
-  // }
 
   @override
   initialData() {
@@ -55,7 +36,6 @@ class HomeControllerImp extends HomeController {
   @override
   void onInit() {
     super.onInit();
-    // searchController = TextEditingController();
     getData();
     initialData();
     update();
@@ -83,26 +63,6 @@ class HomeControllerImp extends HomeController {
     update();
   }
 
-  // searchData() async {
-  //   apiStatusRequest = ApiStatusRequest.loading;
-  //   update();
-  //   var response = await homeData.search(searchController!.text);
-  //   print("=================== Controller $response ");
-  //   apiStatusRequest = handlingRemoteData(response);
-  //   if (apiStatusRequest == ApiStatusRequest.success) {
-  //     if (response['status'] == "success") {
-  //       searchItems.clear();
-  //       List responseItems = response['data'];
-  //       searchItems.addAll(responseItems.map((e) => ItemModel.fromJson(e)));
-  //     } else {
-  //       Get.defaultDialog(
-  //           title: "warning", middleText: "there is an error in the server");
-  //       apiStatusRequest = ApiStatusRequest.failure;
-  //     }
-  //   }
-  //   update();
-  // }
-
   @override
   goToCategoriesScreen() {
     Get.toNamed(AppRoutes.categories, arguments: {"categories": categories});
@@ -116,8 +76,59 @@ class HomeControllerImp extends HomeController {
       "categoryId": categoryId,
     });
   }
+}
 
-  // goToItemDetails(itemModel) {
-  //   Get.toNamed(AppRoutes.itemsDetails, arguments: {"itemModel": itemModel});
-  // }
+class SearchControllerImp extends GetxController {
+  ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
+  HomeData homeData = HomeData(Get.find());
+  TextEditingController? searchController;
+  MyServices myServices = Get.find();
+  bool isSearch = false;
+  List<ItemModel> searchItems = [];
+
+  searchData() async {
+    apiStatusRequest = ApiStatusRequest.loading;
+    update();
+    var response = await homeData.search(
+        searchController!.text, myServices.sharedPreferences.getString("id")!);
+    print("=================== Controller $response ");
+    apiStatusRequest = handlingRemoteData(response);
+    if (apiStatusRequest == ApiStatusRequest.success) {
+      if (response['status'] == "success") {
+        searchItems.clear();
+        List responseItems = response['data'];
+        searchItems.addAll(responseItems.map((e) => ItemModel.fromJson(e)));
+        print(searchItems);
+      } else {
+        Get.defaultDialog(
+            title: "warning", middleText: "there is an error in the server");
+        apiStatusRequest = ApiStatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  @override
+  void onInit() {
+    searchController = TextEditingController();
+    super.onInit();
+  }
+
+  checkSearch(value) {
+    if (value.isEmpty) {
+      apiStatusRequest = ApiStatusRequest.none;
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItem() {
+    isSearch = true;
+    searchData();
+    update();
+  }
+
+  goToItemDetails(ItemModel itemModel) {
+    Get.toNamed(AppRoutes.itemsDetails, arguments: {"itemModel": itemModel});
+  }
 }

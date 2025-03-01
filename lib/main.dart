@@ -13,8 +13,9 @@ void main() async {
     const MyApp(),
   );
   // DevicePreview(
-  // enabled: true,
-  // builder: (context) => const MyApp(),)
+  //   enabled: true,
+  //   builder: (context) => const MyApp(),
+  // );
 }
 
 class MyApp extends StatelessWidget {

@@ -17,10 +17,9 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Get.toNamed(AppRoutes.cart);
           },
-          backgroundColor: AppColors.primaryColor,
           child: Icon(
             Icons.shopping_cart,
-            color: AppColors.gray,
+            color: AppColors.grayOpen,
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

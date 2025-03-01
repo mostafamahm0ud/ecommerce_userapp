@@ -1,5 +1,8 @@
 import 'package:ecommerce_userapp/controller/Auth/success_sign_up_controller.dart';
 import 'package:ecommerce_userapp/controller/Auth/veryfiy_code_signup_controller.dart';
+import 'package:ecommerce_userapp/controller/address/add_address_controller.dart';
+import 'package:ecommerce_userapp/controller/address/add_address_details_controller.dart';
+import 'package:ecommerce_userapp/controller/address/view_address_controller.dart';
 import 'package:ecommerce_userapp/controller/cart/cart_controller.dart';
 import 'package:ecommerce_userapp/controller/cart/my_cart_controller.dart';
 import 'package:ecommerce_userapp/controller/favorite/favorite_controller.dart';
@@ -14,7 +17,6 @@ import 'package:ecommerce_userapp/controller/home/home_screen_controller.dart';
 import 'package:ecommerce_userapp/controller/item/itemDeteils_controller.dart';
 import 'package:ecommerce_userapp/controller/item/item_controller.dart';
 import 'package:ecommerce_userapp/controller/favorite/my_favorite_controller.dart';
-import 'package:ecommerce_userapp/controller/search_controller.dart';
 import 'package:ecommerce_userapp/controller/setting_controller.dart';
 import 'package:ecommerce_userapp/controller/test_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_crud_operations.dart';
@@ -41,7 +43,9 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => SettingControllerImp(), fenix: true);
     Get.lazyPut(() => CartControllerImp(), fenix: true);
     Get.lazyPut(() => MyCartControllerImp(), fenix: true);
-    Get.lazyPut(() => SearchControllerImp(), fenix: true);
+    Get.lazyPut(() => AddAddressController(), fenix: true);
+    Get.lazyPut(() => AddAddressDetailsControllerImp(), fenix: true);
+    Get.lazyPut(() => ViewAddressController(), fenix: true);
     Get.lazyPut(() => TestControllerImp(), fenix: true);
   }
 }

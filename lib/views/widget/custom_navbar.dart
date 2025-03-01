@@ -20,18 +20,20 @@ class CustomSearchNavBar extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            color: Colors.transparent,
+            height: 40,
+            color: AppColors.grayOpen,
             child: TextField(
               controller: mycontroller,
               onChanged: onChanged,
               decoration: InputDecoration(
-                fillColor: AppColors.grayOpen,
-                hintText: 'Find your favorite Product',
+                fillColor: AppColors.gray,
+                hintText: 'Find Product',
                 prefixIcon: IconButton(
                     onPressed: onPressedSearch,
                     icon: Icon(Icons.search, color: Colors.black)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide.none,
                 ),
               ),
             ),

@@ -18,7 +18,7 @@ class CustomItemCart extends StatelessWidget {
 
   final String itemsName;
   final String itemsPrice;
-  final int itemscount;
+  final num itemscount;
   final String itemsImage;
   final String itemsId;
   final void Function()? onadd;

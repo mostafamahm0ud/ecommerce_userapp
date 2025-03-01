@@ -1,4 +1,5 @@
 import 'package:ecommerce_userapp/controller/setting_controller.dart';
+import 'package:ecommerce_userapp/core/constant/app_routes.dart';
 import 'package:ecommerce_userapp/core/constant/colors.dart';
 import 'package:ecommerce_userapp/core/constant/image_assets.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,9 @@ class SettingsScreen extends GetView<SettingControllerImp> {
                       value: true, onChanged: (value) {}),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoutes.address);
+                    },
                     title: Text('Adress'),
                     trailing: Icon(Icons.location_on),
                   ),

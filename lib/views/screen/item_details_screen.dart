@@ -1,5 +1,6 @@
 import 'package:ecommerce_userapp/controller/item/itemDeteils_controller.dart';
 import 'package:ecommerce_userapp/core/class/api_manage_statuts_view.dart';
+import 'package:ecommerce_userapp/core/constant/image_assets.dart';
 import 'package:ecommerce_userapp/core/constant/text_stely.dart';
 import 'package:ecommerce_userapp/core/function/translate_database.dart';
 import 'package:ecommerce_userapp/views/widget/items/cart_button.dart';
@@ -19,16 +20,29 @@ class ItemDetailsScreen extends GetView<ItemDeteilsControllerImp> {
         return ApiManageStatutsRequest(
           statusRequest: controller.apiStatusRequest,
           widget: ListView(children: [
-            ImageAndItemName(),
+            ImageAndItemName(
+              isFav: controller.itemModel.fevorite! == 1,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                   spacing: 10,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "${translateDataBase(controller.itemModel.itemsNameAr, controller.itemModel.itemsName)}",
-                      style: AppTextStyles.headingText24Black,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "${translateDataBase(controller.itemModel.itemsNameAr, controller.itemModel.itemsName)}",
+                          style: AppTextStyles.headingText24Black,
+                        ),
+                        if (controller.itemModel.itemsDiscount! > 0)
+                          Image.asset(
+                            AppAssets.discount,
+                            width: 90,
+                            fit: BoxFit.scaleDown,
+                          ),
+                      ],
                     ),
                     PriceAndCount(
                       onAdd: () {
@@ -37,13 +51,14 @@ class ItemDetailsScreen extends GetView<ItemDeteilsControllerImp> {
                       onRemove: () {
                         controller.remove();
                       },
-                      price: controller.itemModel.itemsPrice.toString(),
+                      price:
+                          controller.itemModel.itemsPriceDiscount!.toString(),
                       count: controller.itemCount.toString(),
                     ),
                     Text(
                       translateDataBase(controller.itemModel.itemsNameAr,
                               controller.itemModel.itemsName) *
-                          70,
+                          20,
                       style: AppTextStyles.bodyContent16Gray,
                     ),
                     Text(

@@ -8,6 +8,10 @@ import 'package:ecommerce_userapp/views/screen/Auth/sign_up_screen.dart';
 import 'package:ecommerce_userapp/views/screen/Auth/forget_password/success_reset_password_screen.dart';
 import 'package:ecommerce_userapp/views/screen/Auth/success_sign_up_screen.dart';
 import 'package:ecommerce_userapp/views/screen/Auth/forget_password/verify_code_screen.dart';
+import 'package:ecommerce_userapp/views/screen/address/add_address_details_screen.dart';
+import 'package:ecommerce_userapp/views/screen/address/add_address_screen.dart';
+import 'package:ecommerce_userapp/views/screen/address/address_screen.dart';
+import 'package:ecommerce_userapp/views/screen/address/edit_address_screen.dart';
 import 'package:ecommerce_userapp/views/screen/cart_screen.dart';
 import 'package:ecommerce_userapp/views/screen/category_screen.dart';
 import 'package:ecommerce_userapp/views/screen/home/home_screen.dart';
@@ -83,6 +87,22 @@ List<GetPage<dynamic>>? route = [
   GetPage(
     name: AppRoutes.cart,
     page: () => const CartScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.address,
+    page: () => const AddressScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.addressAdd,
+    page: () => const AddressAddScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.addressAddDetails,
+    page: () => const AddAddressDetailsScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.addressEdit,
+    page: () => const AddressEditScreen(),
   ),
   // GetPage(
   //   name: AppRoutes.test,

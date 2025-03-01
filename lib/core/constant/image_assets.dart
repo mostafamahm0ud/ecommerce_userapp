@@ -22,4 +22,6 @@ class AppAssets {
 
   // setting profile image
   static const String profile = "$rootImages/person.png";
+  // setting discount image
+  static const String discount = "$rootImages/Discount.png";
 }

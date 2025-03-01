@@ -20,4 +20,10 @@ class AppRoutes {
   static const String itemsDetails = '/itemsDetails';
   static const String myFavorite = '/myFavorite';
   static const String cart ='/cart';
+
+  // address
+  static const String address = '/address';
+  static const String addressAdd = '/addAddress';
+  static const String addressAddDetails = '/addAddressDetails';
+  static const String addressEdit = '/editAddress';
 }

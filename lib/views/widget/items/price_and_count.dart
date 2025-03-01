@@ -56,7 +56,7 @@ class PriceAndCount extends StatelessWidget {
         ),
         Spacer(),
         Text(
-          "\$$price",
+          "$price\$",
           style: AppTextStyles.headingText24Black.copyWith(
             height: 1.2,
           ),
