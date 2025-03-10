@@ -2,7 +2,7 @@ class ApiLinks {
   // static const String baseUrl = 'http://localhost/ecommerce';
   static const String baseUrl = 'http://10.0.2.2/ecommerce';
   static const String baseUrlconnect = '$baseUrl/conect.php';
-  // static const String baseUrl = 'https://apitest.torra.online';
+//   static const String baseUrl = 'https://apitest.torra.online';
   static const String imageBaseUrl = '$baseUrl/upload';
   //============== image Endpoints=================
   static const String imageCategoriesEndpoint = '$imageBaseUrl/categories';

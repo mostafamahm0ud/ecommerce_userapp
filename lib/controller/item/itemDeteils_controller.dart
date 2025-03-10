@@ -61,8 +61,11 @@ class ItemDeteilsControllerImp extends ItemDeteilsController {
     apiStatusRequest = ApiStatusRequest.loading;
     itemModel = Get.arguments['itemModel'];
     print(itemModel.toJson());
-    itemCount =
-      int.parse(await cartController.countItemCart(itemModel.itemsId!.toString()));
+    itemCount = int.parse(
+      await cartController.countItemCart(
+        itemModel.itemsId!.toString(),
+      ),
+    );
     apiStatusRequest = ApiStatusRequest.success;
     update();
   }

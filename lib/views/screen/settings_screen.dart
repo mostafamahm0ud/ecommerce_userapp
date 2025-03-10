@@ -18,7 +18,7 @@ class SettingsScreen extends GetView<SettingControllerImp> {
             alignment: Alignment.center,
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
@@ -30,24 +30,24 @@ class SettingsScreen extends GetView<SettingControllerImp> {
               Positioned(
                 top: Get.height / 6,
                 child: Container(
-                  padding: EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: AppColors.grayOpen),
                   child: CircleAvatar(
                     radius: 50,
                     backgroundColor: AppColors.grayOpen,
-                    backgroundImage: AssetImage(AppAssets.profile),
+                    backgroundImage: const AssetImage(AppAssets.profile),
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Card(
               borderOnForeground: false,
               elevation: 0,
@@ -58,7 +58,7 @@ class SettingsScreen extends GetView<SettingControllerImp> {
                 spacing: 15,
                 children: [
                   ListTile(
-                    title: Text('Disable Notification'),
+                    title: const Text('Disable Notification'),
                     trailing: Switch(
                       activeColor: AppColors.secondaryBlue,
                       value: true, onChanged: (value) {}),
@@ -67,25 +67,25 @@ class SettingsScreen extends GetView<SettingControllerImp> {
                     onTap: () {
                       Get.toNamed(AppRoutes.address);
                     },
-                    title: Text('Adress'),
-                    trailing: Icon(Icons.location_on),
+                    title: const Text('Adress'),
+                    trailing: const Icon(Icons.location_on),
                   ),
                   ListTile(
                     onTap: () {},
-                    title: Text('About US'),
-                    trailing: Icon(Icons.help_outline),
+                    title: const Text('About US'),
+                    trailing: const Icon(Icons.help_outline),
                   ),
                   ListTile(
                     onTap: () {},
-                    title: Text('Contact US'),
-                    trailing: Icon(Icons.phone),
+                    title: const Text('Contact US'),
+                    trailing: const Icon(Icons.phone),
                   ),
                   ListTile(
                     onTap: () {
                       controller.logOut();
                     },
-                    title: Text('Log Out'),
-                    trailing: Icon(Icons.logout),
+                    title: const Text('Log Out'),
+                    trailing: const Icon(Icons.logout),
                   ),
                 ],
               ),

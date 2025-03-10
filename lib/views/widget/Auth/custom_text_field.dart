@@ -28,19 +28,19 @@ class CustomTextFormField extends StatelessWidget {
       focusNode: FocusNode(),
       cursorColor: AppColors.primaryColor,
       keyboardType: isNumber
-          ? TextInputType.numberWithOptions(decimal: true)
+          ? const TextInputType.numberWithOptions(decimal: true)
           : TextInputType.text,
       validator: validator,
       controller: controller,
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10),
         suffixIcon: isPassword == null
             ? icon
             : InkWell(onTap: showPassword, child: icon),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         label: Container(
-          margin: EdgeInsets.only(left: 5),
+          margin: const EdgeInsets.only(left: 5),
           child: Text(
             label,
             style: AppTextStyles.bodyContent12Gray,

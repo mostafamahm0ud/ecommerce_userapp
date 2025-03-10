@@ -65,12 +65,12 @@ class CartScreen extends GetView<MyCartControllerImp> {
                 title: 'Price',
                 price: controller.totalPrice.toString(),
               ),
-              CustomPriceCountCart(
+              const CustomPriceCountCart(
                 title: 'shipping',
                 price: '30',
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Divider(
                   thickness: 1,
                 ),
@@ -80,7 +80,7 @@ class CartScreen extends GetView<MyCartControllerImp> {
                 price: '${controller.totalPrice + 30}',
                 isTotal: true,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               CartChekOutButton(

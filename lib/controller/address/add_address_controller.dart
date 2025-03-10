@@ -21,13 +21,61 @@ class AddAddressController extends GetxController {
 
   Future<void> getCurrentPosition() async {
     try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        Get.snackbar(
+          "Error",
+          "Location services are disabled. Please enable them.",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        statusRequest = ApiStatusRequest.failure;
+        update();
+        return;
+      }
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          Get.snackbar(
+            "Error",
+            "Location permissions are denied.",
+            snackPosition: SnackPosition.BOTTOM,
+          );
+          statusRequest = ApiStatusRequest.failure;
+          update();
+          return;
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        Get.snackbar(
+          "Error",
+          "Location permissions are permanently denied, we cannot request permissions.",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        statusRequest = ApiStatusRequest.failure;
+        update();
+        return;
+      }
+
       currentPosition = await Geolocator.getCurrentPosition();
-      cameraPosition = CameraPosition(
-        target: LatLng(currentPosition!.latitude, currentPosition!.longitude),
-        zoom: 14,
-      );
-      statusRequest = ApiStatusRequest.none;
-      update();
+      if (currentPosition != null) {
+        cameraPosition = CameraPosition(
+          target: LatLng(currentPosition!.latitude, currentPosition!.longitude),
+          zoom: 14,
+        );
+        statusRequest = ApiStatusRequest.none;
+        update();
+      } else {
+        statusRequest = ApiStatusRequest.failure;
+        update();
+        Get.snackbar(
+          "Error",
+          "Failed to fetch current location.",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }
     } catch (e) {
       statusRequest = ApiStatusRequest.failure;
       update();
@@ -49,11 +97,12 @@ class AddAddressController extends GetxController {
       return;
     }
 
+    final LatLng position = markers[0].position;
     Get.toNamed(
       AppRoutes.addressAddDetails,
       arguments: {
-        "lat": markers[0].position.latitude.toString(),
-        "lng": markers[0].position.longitude.toString(),
+        "lat": position.latitude.toString(),
+        "lng": position.longitude.toString(),
       },
     );
   }

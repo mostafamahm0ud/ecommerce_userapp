@@ -28,12 +28,12 @@ class ForgetPasswordScreen extends StatelessWidget {
         builder: (controller) =>  ApiManageStatutsRequest(
           statusRequest: controller.apiStatusRequest,
           widget: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
                   child: Form(
                     key: controller.formKey,
                     child: ListView(
                       children: [
-                        CustomHeaderAndContantAuth(
+                        const CustomHeaderAndContantAuth(
                           header: 'Check Email',
                           content:
                               'Enter your email address to receive a password reset code',
@@ -42,13 +42,13 @@ class ForgetPasswordScreen extends StatelessWidget {
                           controller: controller.email,
                           label: 'Email',
                           hint: 'Enter your email address',
-                          icon: Icon(Icons.email_outlined),
+                          icon: const Icon(Icons.email_outlined),
                           validator: (value) {
                             return validataInput(value!, 30, 5, "email");
                           },
                           isNumber: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomButtonAuth(
@@ -57,7 +57,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                           textColor: Colors.white,
                           onPressed: controller.checkEmail,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                       ],

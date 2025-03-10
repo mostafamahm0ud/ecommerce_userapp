@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                               );
                             },
                           )
-                        : Column(
+                        : const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               DiscountCard(

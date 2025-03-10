@@ -62,7 +62,7 @@ class ItemCard extends GetView<ItemControllerImp> {
                         child: Row(children: [
                           ...List.generate(
                             5,
-                            (index) => Icon(
+                            (index) => const Icon(
                               Icons.star,
                               // color: Colors.amber,
                               size: 16,

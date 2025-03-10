@@ -15,7 +15,7 @@ class CartChekOutButton extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         height: 40,
-        child: Text(
+        child: const Text(
           'Checkout',
           textAlign: TextAlign.center,
           style: TextStyle(

@@ -27,7 +27,7 @@ class PriceAndCount extends StatelessWidget {
           children: [
             IconButton(
               onPressed: onRemove,
-              icon: Icon(
+              icon: const Icon(
                 Icons.remove,
               ),
             ),
@@ -48,13 +48,13 @@ class PriceAndCount extends StatelessWidget {
             ),
             IconButton(
               onPressed: onAdd,
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
               ),
             )
           ],
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           "$price\$",
           style: AppTextStyles.headingText24Black.copyWith(

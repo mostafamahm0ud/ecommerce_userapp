@@ -32,7 +32,7 @@ class CategoriesItem extends GetView<ItemControllerImp> {
               return Container(
                 decoration: BoxDecoration(
                   border: controller.selectedCategoryIndex == slectedindex!
-                      ? Border(
+                      ? const Border(
                           bottom: BorderSide(
                               color: AppColors.primaryColor, width: 3))
                       : null,

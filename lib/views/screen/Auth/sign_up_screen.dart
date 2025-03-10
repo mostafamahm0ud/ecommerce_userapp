@@ -29,69 +29,69 @@ class SignUpScreen extends StatelessWidget {
         builder: (controller) =>  ApiManageStatutsRequest(
           statusRequest: controller.apiStatusRequest,
           widget: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
                   child: Form(
                     key: controller.formKey,
                     child: ListView(
                       children: [
-                        CustomHeaderAndContantAuth(
+                        const CustomHeaderAndContantAuth(
                           header: 'Register Now',
                           content: 'Sign up with your email and password',
                         ),
                         CustomTextFormField(
-                          controller: controller.userName,
+                          controller: controller.userNameController,
                           label: 'User Name',
                           hint: 'Enter your User Name',
-                          icon: Icon(Icons.person_outline),
+                          icon: const Icon(Icons.person_outline),
                           validator: (value) {
                             return validataInput(value!, 30, 5, "userName");
                           },
                           isNumber: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomTextFormField(
-                          controller: controller.email,
+                          controller: controller.emailController,
                           label: 'Email',
                           hint: 'Enter your email address',
-                          icon: Icon(Icons.email_outlined),
+                          icon: const Icon(Icons.email_outlined),
                           validator: (value) {
                             return validataInput(value!, 30, 5, "email");
                           },
                           isNumber: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomTextFormField(
-                          controller: controller.phoneNumber,
+                          controller: controller.phoneNumberController,
                           label: 'Phone',
                           hint: 'Enter your Phone Number',
-                          icon: Icon(Icons.phone_android_outlined),
+                          icon: const Icon(Icons.phone_android_outlined),
                           validator: (value) {
                             return validataInput(value!, 11, 11, "Phone");
                           },
                           isNumber: true,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomTextFormField(
-                          isPassword: controller.isPassword,
-                          controller: controller.password,
+                          isPassword: controller.isPasswordVisible,
+                          controller: controller.passwordController,
                           label: 'Password',
                           hint: 'Enter your Password',
-                          icon: controller.isPassword
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.lock_outline),
-                          showPassword: controller.showPassword,
+                          icon: controller.isPasswordVisible
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.lock_outline),
+                          showPassword: controller.togglePasswordVisibility,
                           validator: (value) {
                             return validataInput(value!, 30, 8, "password");
                           },
                           isNumber: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomButtonAuth(
@@ -102,7 +102,7 @@ class SignUpScreen extends StatelessWidget {
                             controller.signUp();
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         HaveOrNotHaveAccount(

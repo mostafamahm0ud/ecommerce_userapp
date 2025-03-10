@@ -16,7 +16,7 @@ class OnBoardingScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
+            const Expanded(
               flex: 2,
               child: CustomSlider(),
             ),
@@ -25,9 +25,9 @@ class OnBoardingScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Spacer(),
-                  CustomDotController(),
-                  Spacer(flex: 2),
+                  const Spacer(),
+                  const CustomDotController(),
+                  const Spacer(flex: 2),
                   CustomOnBoardingButton(
                     buttonTo: "8".tr,
                     color: AppColors.primaryColor,
@@ -36,7 +36,7 @@ class OnBoardingScreen extends StatelessWidget {
                     // textColor: AppColors.primaryColor,
                     color: AppColors.gray,
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ),

@@ -65,7 +65,7 @@ class ItemDetailsScreen extends GetView<ItemDeteilsControllerImp> {
                       "Color",
                       style: AppTextStyles.headingText24Black,
                     ),
-                    ColorList(),
+                    const ColorList(),
                   ]),
             ),
           ]),

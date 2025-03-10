@@ -28,10 +28,10 @@ class VerifyCodeScreen extends StatelessWidget {
             statusRequest: controller.apiStatusRequest,
             widget: Center(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
                 child: ListView(
                   children: [
-                    CustomHeaderAndContantAuth(
+                    const CustomHeaderAndContantAuth(
                       header: 'Verify Code',
                       content: 'Enter the code that has been sent to\nTest@gmail.com',
                     ),

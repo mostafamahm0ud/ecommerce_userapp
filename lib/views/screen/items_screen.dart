@@ -27,9 +27,9 @@ class ItemsScreen extends GetView<ItemControllerImp> {
             },
             mycontroller: controller.searchController,
           ),
-          SizedBox(height: 8),
-          ListCategoriesItem(),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
+          const ListCategoriesItem(),
+          const SizedBox(height: 8),
           GetBuilder<ItemControllerImp>(builder: (controller) {
             return ApiManageStatutsRequest(
                 statusRequest: controller.apiStatusRequest,
@@ -48,7 +48,7 @@ class ItemsScreen extends GetView<ItemControllerImp> {
                           );
                         },
                       )
-                    : GridViewItemList());
+                    : const GridViewItemList());
           }),
         ],
       ),

@@ -32,7 +32,6 @@ class MyCartControllerImp extends MyCartController {
     update();
     var response = await myCartData
         .getMyCartData(myServices.sharedPreferences.getString("id")!);
-    print("=================== Controller $response");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {
       if (response['status'] == "success") {
@@ -43,13 +42,15 @@ class MyCartControllerImp extends MyCartController {
           myCartList.addAll(listData.map((e) => MyCartModel.fromJson(e)));
           totalPrice = countPrice['totalprice'].toDouble();
           totalCount = countPrice['totalcount'];
-          print(
-              "=================== Controller $myCartList ,\n $totalCount ,\n $totalPrice");
+        } else {
+          Get.defaultDialog(
+              title: "warning", middleText: "there is an error in the server");
+          apiStatusRequest = ApiStatusRequest.failure;
+          update();
         }
       } else {
         Get.defaultDialog(
             title: "warning", middleText: "there is an error in the server");
-        apiStatusRequest = ApiStatusRequest.failure;
       }
     }
     update();
@@ -61,7 +62,6 @@ class MyCartControllerImp extends MyCartController {
     update();
     var response = await cartData.addToCartData(
         myServices.sharedPreferences.getString("id")!, itemid);
-    print("=================== Controller $response add to favorite");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {
       if (response['status'] == "success") {
@@ -81,22 +81,18 @@ class MyCartControllerImp extends MyCartController {
     update();
     var response = await cartData.removeFromCartData(
         myServices.sharedPreferences.getString("id")!, itemid);
-    print("=================== Controller $response remove from cart");
     apiStatusRequest = handlingRemoteData(response);
     if (apiStatusRequest == ApiStatusRequest.success) {
       if (response['status'] == "success") {
         Get.rawSnackbar(
             title: "success",
             message: "item removed from cart successfully",
-            backgroundColor: AppColors.gray,
-            icon: Icon(Icons.done, color: AppColors.primaryColor));
+            icon: const Icon(Icons.done, color: AppColors.primaryColor));
       } else {
         Get.rawSnackbar(
             title: "warning",
             message: "there is an error in the server",
-            backgroundColor: AppColors.gray,
-            icon: Icon(Icons.error,
-                color: const Color.fromARGB(64, 255, 255, 255)));
+            icon: const Icon(Icons.error, color: AppColors.primaryColor));
         apiStatusRequest = ApiStatusRequest.failure;
       }
     }

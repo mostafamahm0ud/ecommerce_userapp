@@ -12,7 +12,7 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Test"),
+        title: const Text("Test"),
       ),
       body: GetBuilder<TestControllerImp>(builder: (controller) {
         return ApiManageStatutsRequest(
@@ -22,7 +22,7 @@ class TestScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Test Screen"),
+                  const Text("Test Screen"),
                   SvgPicture.network(
                     "${ApiLinks.imageCategoriesEndpoint}/pcs.svg",
                     fit: BoxFit.none,

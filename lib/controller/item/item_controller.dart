@@ -18,6 +18,7 @@ class ItemControllerImp extends SearchControllerImp implements ItemController {
   List categories = [];
   int? selectedCategoryIndex;
   String? catId;
+  @override
   MyServices myServices = Get.find();
   List items = [];
   ItemData itemData = ItemData(Get.find());

@@ -62,7 +62,7 @@ class CustomItemCart extends StatelessWidget {
                   height: 30,
                   child: IconButton(
                     alignment: Alignment.topCenter,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                     ),
                     onPressed: onadd,
@@ -74,7 +74,7 @@ class CustomItemCart extends StatelessWidget {
                 SizedBox(
                   height: 30,
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.remove,
                     ),
                     onPressed: onremove,

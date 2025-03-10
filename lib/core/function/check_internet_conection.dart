@@ -6,7 +6,7 @@ Future<bool> checkInternetConnection() async {
   try {
     final response = await http
         .get(Uri.parse('https://www.google.com'))
-        .timeout(Duration(seconds: 5));
+        .timeout(const Duration(seconds: 5));
     return response.statusCode == 200;
   } on TimeoutException catch (_) {
     return false;
@@ -19,7 +19,7 @@ Future<bool> testConnection() async {
   try {
     final response = await http
         .get(Uri.parse(ApiLinks.baseUrlconnect))
-        .timeout(Duration(seconds: 5));
+        .timeout(const Duration(seconds: 5));
     if (response.statusCode == 200) {
       print('Server is working: ${response.body}');
       return true;

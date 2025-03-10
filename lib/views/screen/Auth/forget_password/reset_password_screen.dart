@@ -29,13 +29,13 @@ class ResetPasswordScreen extends StatelessWidget {
         builder: (controller) => ApiManageStatutsRequest(
           statusRequest: controller.apiStatusRequest,
           widget: Container(
-            padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
             child: Form(
               key: controller.formKey,
               child: ListView(
                 children: [
-                  CustomAppLogo(),
-                  CustomHeaderAndContantAuth(
+                  const CustomAppLogo(),
+                  const CustomHeaderAndContantAuth(
                     header: 'New Password',
                     content: 'Enter your new password and confirm it below',
                   ),
@@ -45,15 +45,15 @@ class ResetPasswordScreen extends StatelessWidget {
                     label: 'Password',
                     hint: 'Enter your Password',
                     icon: controller.isPassword
-                        ? Icon(Icons.visibility)
-                        : Icon(Icons.lock_outline),
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.lock_outline),
                     showPassword: controller.isShowPassword,
                     validator: (value) {
                       return validataInput(value!, 30, 5, "password");
                     },
                     isNumber: false,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   CustomTextFormField(
@@ -62,15 +62,15 @@ class ResetPasswordScreen extends StatelessWidget {
                     label: 'Confirm Password',
                     hint: 'Re Enter your Password',
                     icon: controller.isPassword
-                        ? Icon(Icons.visibility)
-                        : Icon(Icons.lock_outline),
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.lock_outline),
                     showPassword: controller.isShowPassword(),
                     validator: (value) {
                       return validataInput(value!, 30, 5, "password");
                     },
                     isNumber: false,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   CustomButtonAuth(

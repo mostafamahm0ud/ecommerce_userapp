@@ -23,10 +23,10 @@ class CustomSlider extends GetView<OnBoardingControllerImp> {
                 onBoardingList[index].title,
                 style: AppTextStyles.headingText24Black,
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Image.asset(onBoardingList[index].image,
                   height: 200, width: 200, fit: BoxFit.fill),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Container(
                 width: double.infinity,
                 alignment: Alignment.center,

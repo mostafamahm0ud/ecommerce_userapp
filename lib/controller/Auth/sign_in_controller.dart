@@ -7,77 +7,104 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class SignInController extends GetxController {
-  signIn();
-  goToSignUp();
-  goToForgetPassword();
-  isShowPassword();
+  void signIn();
+  void goToSignUp();
+  void goToForgetPassword();
+  void togglePasswordVisibility();
 }
 
 class SignInControllerImp extends SignInController {
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
-  SignInData signInData = SignInData(Get.find());
-  MyServices myServices = Get.find();
-  bool isPassword = true;
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  late TextEditingController email;
-  late TextEditingController password;
+  final SignInData signInData = SignInData(Get.find());
+  final MyServices myServices = Get.find();
+  bool isPasswordVisible = true;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+
   @override
-  isShowPassword() {
-    isPassword = !isPassword;
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
     update();
   }
 
   @override
-  signIn() async {
-    if (formKey.currentState!.validate()) {
-      apiStatusRequest = ApiStatusRequest.loading;
-      update();
-      var response = await signInData.postData(
-        email.text,
-        password.text,
+  Future<void> signIn() async {
+    if (!formKey.currentState!.validate()) return;
+
+    apiStatusRequest = ApiStatusRequest.loading;
+    update();
+
+    try {
+      final response = await signInData.postData(
+        emailController.text.trim(),
+        passwordController.text.trim(),
       );
+
       apiStatusRequest = handlingRemoteData(response);
+
       if (apiStatusRequest == ApiStatusRequest.success) {
         if (response['status'] == 'success') {
-          if (response['data']['users_approve'] == 1) {
-            myServices.sharedPreferences
-                .setString("id", response['data']['users_id'].toString());
-            myServices.sharedPreferences
-                .setString("email", response['data']['users_email']);
-            myServices.sharedPreferences
-                .setString("userName", response['data']['users_name']);
-            myServices.sharedPreferences
-                .setString("phone", response['data']['users_phone']);
-            myServices.sharedPreferences.setString("step", "2");
+          final userData = response['data'];
+          if (userData['users_approve'] == 1) {
+            _saveUserData(userData);
             Get.offNamed(AppRoutes.home);
           } else {
-            Get.toNamed(AppRoutes.checkSignUpEmail,
-                arguments: {"email": email.text});
+            Get.toNamed(
+              AppRoutes.checkSignUpEmail,
+              arguments: {"email": emailController.text.trim()},
+            );
           }
         } else {
-          Get.defaultDialog(
-              title: "warning", middleText: "email or password is not correct");
+          _showErrorDialog("Email or password is incorrect.");
           apiStatusRequest = ApiStatusRequest.failure;
         }
       }
+    } catch (e) {
+      _showErrorDialog("An error occurred. Please try again.");
+      apiStatusRequest = ApiStatusRequest.failure;
+    } finally {
       update();
     }
   }
 
+  void _saveUserData(Map<String, dynamic> userData) {
+    myServices.sharedPreferences
+        .setString("id", userData['users_id'].toString());
+    myServices.sharedPreferences.setString("email", userData['users_email']);
+    myServices.sharedPreferences.setString("userName", userData['users_name']);
+    myServices.sharedPreferences.setString("phone", userData['users_phone']);
+    myServices.sharedPreferences.setString("step", "2");
+  }
+
+  void _showErrorDialog(String message) {
+    Get.defaultDialog(
+      title: "Warning",
+      middleText: message,
+    );
+  }
+
   @override
-  goToSignUp() {
+  void goToSignUp() {
     Get.toNamed(AppRoutes.signUp);
   }
 
   @override
+  void goToForgetPassword() {
+    Get.toNamed(AppRoutes.forgetPassword);
+  }
+
+  @override
   void onInit() {
-    email = TextEditingController();
-    password = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
     super.onInit();
   }
 
   @override
-  goToForgetPassword() {
-    Get.toNamed(AppRoutes.forgetPassword);
+  void onClose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }

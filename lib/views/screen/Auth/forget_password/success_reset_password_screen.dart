@@ -25,15 +25,15 @@ class SuccessResetPasswordSuccess extends StatelessWidget {
         builder: (controller) {
           return Center(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
               child: ListView(
                 children: [
-                  Icon(Icons.check_circle_outline_sharp, size: 100, color: AppColors.primaryColor),
-                  CustomHeaderAndContantAuth(
+                  const Icon(Icons.check_circle_outline_sharp, size: 100, color: AppColors.primaryColor),
+                  const CustomHeaderAndContantAuth(
                     header: 'Successfully',
                     content: 'Your password has been reset',
                   ),
-                  Spacer(),
+                  const Spacer(),
                   CustomButtonAuth(
                     buttonTo: 'Sign In',
                     buttonColor: AppColors.primaryColor,
@@ -42,7 +42,7 @@ class SuccessResetPasswordSuccess extends StatelessWidget {
                       controller.goToSignIn();
                     },
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),

@@ -4,13 +4,14 @@ import 'package:ecommerce_userapp/core/function/handling_remote_data.dart';
 import 'package:ecommerce_userapp/data/dataSource/remote/Auth/signup_verfiycode_data.dart';
 import 'package:get/get.dart';
 
-abstract class VeryfiyCodeSignUpController extends GetxController {
-  goToSuccessSignUp(String verifyCode);
-  reSendEmail();
+abstract class VerifyCodeSignUpController extends GetxController {
+  void goToSuccessSignUp(String verifyCode);
+  void reSendEmail();
 }
 
-class VeryfiyCodeSignUpControllerImp extends VeryfiyCodeSignUpController {
-  SignupVerfiycodeData signupVerfiycodeData = SignupVerfiycodeData(Get.find());
+class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
+  final SignupVerfiycodeData signupVerifycodeData =
+      SignupVerfiycodeData(Get.find());
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   String? email;
 
@@ -21,25 +22,48 @@ class VeryfiyCodeSignUpControllerImp extends VeryfiyCodeSignUpController {
   }
 
   @override
-  void goToSuccessSignUp(String verifyCode) async {
+  Future<void> goToSuccessSignUp(String verifyCode) async {
     apiStatusRequest = ApiStatusRequest.loading;
     update();
-    var response = await signupVerfiycodeData.postData(verifyCode, email!);
-    apiStatusRequest = handlingRemoteData(response);
-    if (apiStatusRequest == ApiStatusRequest.success) {
-      if (response['status'] == 'success') {
-        Get.offNamed(AppRoutes.successSignUpScreen);
-      } else {
-        Get.defaultDialog(
-            title: "warning", middleText: "Verify code is not correct");
-        apiStatusRequest = ApiStatusRequest.failure;
+
+    try {
+      final response = await signupVerifycodeData.postData(verifyCode, email!);
+      apiStatusRequest = handlingRemoteData(response);
+
+      if (apiStatusRequest == ApiStatusRequest.success) {
+        if (response['status'] == 'success') {
+          Get.offNamed(AppRoutes.successSignUpScreen);
+        } else {
+          _showErrorDialog("Verification code is not correct.");
+          apiStatusRequest = ApiStatusRequest.failure;
+        }
       }
+    } catch (e) {
+      _showErrorDialog("An error occurred. Please try again.");
+      apiStatusRequest = ApiStatusRequest.failure;
+    } finally {
+      update();
     }
-    update();
   }
 
   @override
-  reSendEmail() {
-    signupVerfiycodeData.reSend(email!);
+  Future<void> reSendEmail() async {
+    try {
+      await signupVerifycodeData.reSend(email!);
+      Get.snackbar(
+        "Success",
+        "Verification email has been resent.",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      _showErrorDialog("Failed to resend verification email.");
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    Get.defaultDialog(
+      title: "Warning",
+      middleText: message,
+    );
   }
 }

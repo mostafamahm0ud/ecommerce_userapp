@@ -30,7 +30,7 @@ class CustomSearchNavBar extends StatelessWidget {
                 hintText: 'Find Product',
                 prefixIcon: IconButton(
                     onPressed: onPressedSearch,
-                    icon: Icon(Icons.search, color: Colors.black)),
+                    icon: const Icon(Icons.search, color: Colors.black)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide.none,
@@ -43,7 +43,7 @@ class CustomSearchNavBar extends StatelessWidget {
           elevation: 0,
           color: AppColors.grayOpen,
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.favorite_border,
               color: Colors.black,
               size: 30,

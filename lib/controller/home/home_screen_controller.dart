@@ -10,14 +10,14 @@ abstract class HomeScreenController extends GetxController {
 class HomeScreenControllerImp extends HomeScreenController {
   int currentPage = 0;
   List<Widget> pages = [
-    HomePage(),
-    Center(
+    const HomePage(),
+    const Center(
       child: Text('Notifications'),
     ),
-    Center(
+    const Center(
       child: Text('Profile'),
     ),
-    SettingsScreen(),
+    const SettingsScreen(),
   ];
 
   List bottomAppBarItems = [

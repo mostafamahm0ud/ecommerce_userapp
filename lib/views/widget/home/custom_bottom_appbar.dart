@@ -12,7 +12,7 @@ class CustomBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeScreenControllerImp>(builder: (controller) {
       return BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,9 +20,9 @@ class CustomBottomAppBar extends StatelessWidget {
             ...List.generate(controller.pages.length + 1, (index) {
               int i = index > 2 ? index - 1 : index;
               return index == 2
-                  ? Expanded(
+                  ? const Expanded(
                       flex: 5,
-                      child: SizedBox(),
+                      child:  SizedBox(),
                     )
                   : Expanded(
                       flex: 4,

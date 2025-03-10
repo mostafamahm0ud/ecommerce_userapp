@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 ThemeData themeEnglish = ThemeData(
   fontFamily: 'PlayfairDisplay',
   scaffoldBackgroundColor: AppColors.white,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: AppColors.primaryColor,
   ),
   appBarTheme: AppBarTheme(
@@ -13,7 +13,7 @@ ThemeData themeEnglish = ThemeData(
     elevation: 0.0,
     centerTitle: true,
     titleTextStyle: AppTextStyles.bodyContent16Gray,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.primaryColor,
     ),
   ),
@@ -22,7 +22,7 @@ ThemeData themeEnglish = ThemeData(
 ThemeData themeArabic = ThemeData(
   fontFamily: 'Cairo',
   scaffoldBackgroundColor: AppColors.white,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: AppColors.primaryColor,
     
   ),
@@ -31,7 +31,7 @@ ThemeData themeArabic = ThemeData(
     elevation: 0.0,
     centerTitle: true,
     titleTextStyle: AppTextStyles.bodyContent16Gray,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.primaryColor,
     ),
   ),

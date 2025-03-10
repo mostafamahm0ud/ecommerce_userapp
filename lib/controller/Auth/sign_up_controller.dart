@@ -6,63 +6,90 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController {
-  signUp();
-  goToSignIn();
-  showPassword();
+  void signUp();
+  void goToSignIn();
+  void togglePasswordVisibility();
 }
 
 class SignUpControllerImp extends SignUpController {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  SignUpData signUpData = SignUpData(Get.find());
-  bool isPassword = true;
-  late TextEditingController userName;
-  late TextEditingController email;
-  late TextEditingController phoneNumber;
-  late TextEditingController password;
-  ApiStatusRequest apiStatusRequest=ApiStatusRequest.none;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final SignUpData signUpData = SignUpData(Get.find());
+  bool isPasswordVisible = true;
+  late final TextEditingController userNameController;
+  late final TextEditingController emailController;
+  late final TextEditingController phoneNumberController;
+  late final TextEditingController passwordController;
+  ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
+
   @override
-  showPassword() {
-    isPassword = !isPassword;
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
     update();
   }
 
   @override
-  signUp() async {
-    if (formKey.currentState!.validate()) {
-      apiStatusRequest = ApiStatusRequest.loading;
-      update();
-      var response = await signUpData.postData(
-        userName.text,
-        email.text,
-        password.text,
-        phoneNumber.text,
+  Future<void> signUp() async {
+    if (!formKey.currentState!.validate()) return;
+
+    apiStatusRequest = ApiStatusRequest.loading;
+    update();
+
+    try {
+      final response = await signUpData.postData(
+        userNameController.text.trim(),
+        emailController.text.trim(),
+        passwordController.text.trim(),
+        phoneNumberController.text.trim(),
       );
+
       apiStatusRequest = handlingRemoteData(response);
+
       if (apiStatusRequest == ApiStatusRequest.success) {
         if (response['status'] == 'success') {
-          Get.offNamed(AppRoutes.checkSignUpEmail, arguments: {'email': email.text});
+          Get.offNamed(
+            AppRoutes.checkSignUpEmail,
+            arguments: {'email': emailController.text.trim()},
+          );
         } else {
-          Get.defaultDialog(
-              title: "warning",
-              middleText: "Phone Number Or Email Already Exist");
+          _showErrorDialog("Phone number or email already exists.");
           apiStatusRequest = ApiStatusRequest.failure;
         }
       }
+    } catch (e) {
+      _showErrorDialog("An error occurred. Please try again.");
+      apiStatusRequest = ApiStatusRequest.failure;
+    } finally {
       update();
     }
   }
 
+  void _showErrorDialog(String message) {
+    Get.defaultDialog(
+      title: "Warning",
+      middleText: message,
+    );
+  }
+
   @override
-  goToSignIn() {
+  void goToSignIn() {
     Get.offNamed(AppRoutes.signIn);
   }
 
   @override
   void onInit() {
-    userName = TextEditingController();
-    email = TextEditingController();
-    phoneNumber = TextEditingController();
-    password = TextEditingController();
+    userNameController = TextEditingController();
+    emailController = TextEditingController();
+    phoneNumberController = TextEditingController();
+    passwordController = TextEditingController();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    userNameController.dispose();
+    emailController.dispose();
+    phoneNumberController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }

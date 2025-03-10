@@ -31,7 +31,7 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => ForgetPasswordControllerImp(), fenix: true);
     Get.lazyPut(() => ResetPasswordControllerImp(), fenix: true);
     Get.lazyPut(() => VerifyCodeControllerImp(), fenix: true);
-    Get.lazyPut(() => VeryfiyCodeSignUpControllerImp(), fenix: true);
+    Get.lazyPut(() => VerifyCodeSignUpControllerImp(), fenix: true);
     Get.lazyPut(() => SuccessSignUpControllerImp(), fenix: true);
     Get.lazyPut(() => SuccessResetPasswordControllerImp(), fenix: true);
     Get.lazyPut(() => HomeControllerImp(), fenix: true);

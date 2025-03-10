@@ -16,12 +16,12 @@ class SelectLanguageScreen extends GetView<LocaleController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
+            const Spacer(),
             Text(
               '1'.tr,
               style: AppTextStyles.headingText24Black,
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             CustomSelectLanguageButton(onPressed: () {
@@ -37,7 +37,7 @@ class SelectLanguageScreen extends GetView<LocaleController> {
               color: AppColors.gray,
               // textColor: AppColors.primaryColor,
             ),
-            Spacer()
+            const Spacer()
           ],
         ),
       ),

@@ -30,45 +30,45 @@ class SignInScreen extends StatelessWidget {
           builder: (controller) => ApiManageStatutsRequest(
             statusRequest: controller.apiStatusRequest,
             widget: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
                     child: Form(
                       key: controller.formKey,
                       child: ListView(
                         children: [
-                          CustomAppLogo(),
-                          CustomHeaderAndContantAuth(
+                          const CustomAppLogo(),
+                          const CustomHeaderAndContantAuth(
                             header: 'Welcome Back',
                             content:
                                 'Sign in with your email and password OR Containue  with your Social Media Account',
                           ),
                           CustomTextFormField(
-                            controller: controller.email,
+                            controller: controller.emailController,
                             label: 'Email',
                             hint: 'Enter your email address',
-                            icon: Icon(Icons.email_outlined),
+                            icon: const Icon(Icons.email_outlined),
                             validator: (value) {
                               return validataInput(value!, 30, 5, "email");
                             },
                             isNumber: false,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           CustomTextFormField(
-                            isPassword: controller.isPassword,
-                            controller: controller.password,
+                            isPassword: controller.isPasswordVisible,
+                            controller: controller.passwordController,
                             label: 'Password',
                             hint: 'Enter your Password',
-                            icon: controller.isPassword
-                                ? Icon(Icons.visibility)
-                                : Icon(Icons.lock_outline),
-                            showPassword: controller.isShowPassword,
+                            icon: controller.isPasswordVisible
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.lock_outline),
+                            showPassword: controller.togglePasswordVisibility,
                             validator: (value) {
                               return validataInput(value!, 30, 5, "password");
                             },
                             isNumber: false,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           InkWell(
@@ -85,7 +85,7 @@ class SignInScreen extends StatelessWidget {
                             textColor: Colors.white,
                             onPressed: controller.signIn,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           HaveOrNotHaveAccount(

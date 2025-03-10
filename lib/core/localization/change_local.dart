@@ -46,13 +46,13 @@ class LocaleController extends GetxController {
     requestPerLocation();
     String? savedLanguage = myServices.sharedPreferences.getString("language");
     if (savedLanguage == "ar") {
-      language = Locale("ar");
+      language = const Locale("ar");
       appTheme = themeArabic;
-      Get.updateLocale(Locale("ar"));
+      Get.updateLocale(const Locale("ar"));
     } else if (savedLanguage == "en") {
-      language = Locale("en");
+      language = const Locale("en");
       appTheme = themeEnglish;
-      Get.updateLocale(Locale("en"));
+      Get.updateLocale(const Locale("en"));
     } else {
       language = Locale(Get.deviceLocale!.languageCode);
       appTheme = themeEnglish;

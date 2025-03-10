@@ -32,6 +32,7 @@ class ViewAddressController extends GetxController {
         }
       } else {
         apiStatusRequest = ApiStatusRequest.failure;
+        update();
       }
     }
     update();

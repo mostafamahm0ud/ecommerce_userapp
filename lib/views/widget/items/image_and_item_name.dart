@@ -21,7 +21,7 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
         Container(
           height: 160,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColors.primaryColor,
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(20),
@@ -34,7 +34,7 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
             top: 50,
             child: Center(
               child: Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 20,
                 ),
                 child: CachedNetworkImage(
@@ -54,7 +54,7 @@ class ImageAndItemName extends GetView<ItemDeteilsControllerImp> {
             onPressed: () {
               Get.back();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_sharp,
               color: AppColors.white,
               size: 30,

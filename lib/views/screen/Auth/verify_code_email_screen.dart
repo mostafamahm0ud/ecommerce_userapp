@@ -23,15 +23,15 @@ class VerfiyCodeSignUpEmailScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: AppColors.backgroundColor,
       ),
-      body: GetBuilder<VeryfiyCodeSignUpControllerImp>(builder: (controller) {
+      body: GetBuilder<VerifyCodeSignUpControllerImp>(builder: (controller) {
         return ApiManageStatutsRequest(
           statusRequest: controller.apiStatusRequest,
           widget: Center(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
               child: ListView(
                 children: [
-                  CustomAppLogo(),
+                  const CustomAppLogo(),
                   CustomHeaderAndContantAuth(
                     header: 'Confirm Email',
                     content:

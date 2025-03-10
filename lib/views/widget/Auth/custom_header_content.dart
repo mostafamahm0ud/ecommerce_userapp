@@ -19,11 +19,11 @@ class CustomHeaderAndContantAuth extends StatelessWidget {
           style: AppTextStyles.headingText24Black,
           textAlign: TextAlign.center,
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
-          margin: EdgeInsets.all(15),
+          margin: const EdgeInsets.all(15),
           child: Text(
             content,
             style: AppTextStyles.bodyContent12Gray,
