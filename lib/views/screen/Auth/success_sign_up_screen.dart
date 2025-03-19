@@ -34,7 +34,7 @@ class SuccessSignUpScreen extends StatelessWidget {
                     header: 'Successfully',
                     content: 'Your account has been created',
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 40),
                   CustomButtonAuth(
                     buttonTo: 'Sign In',
                     buttonColor: AppColors.primaryColor,

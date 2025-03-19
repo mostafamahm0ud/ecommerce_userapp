@@ -33,7 +33,7 @@ class SuccessResetPasswordSuccess extends StatelessWidget {
                     header: 'Successfully',
                     content: 'Your password has been reset',
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 40),
                   CustomButtonAuth(
                     buttonTo: 'Sign In',
                     buttonColor: AppColors.primaryColor,
