@@ -48,4 +48,7 @@ class ApiLinks {
   static const String viewAddressEndpoint = '$baseUrl/address/view.php';
   static const String deleteAddressEndpoint = '$baseUrl/address/delete.php';
   static const String editAddressEndpoint = '$baseUrl/address/edit.php';
+
+  // ============= Coupon Endpoints================= //
+  static const String checkCouponEndpoint = '$baseUrl/coupon/checkcoupon.php';
 }

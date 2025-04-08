@@ -33,4 +33,12 @@ class CartData {
     });
     return response.fold((l) => l, (r) => r);
   }
+  
+  couponData(String coupon) async {
+    var response =
+        await apiCrudOperationsModel.postData(ApiLinks.checkCouponEndpoint, {
+      "coupon_name": coupon,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

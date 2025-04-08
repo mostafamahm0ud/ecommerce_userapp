@@ -12,6 +12,7 @@ abstract class MyCartController extends GetxController {
   getData();
   resetVar();
   refreshData();
+  checkCoupon();
   add(String itemid);
   remove(String itemid);
 }
@@ -21,6 +22,8 @@ class MyCartControllerImp extends MyCartController {
   ApiStatusRequest apiStatusRequest = ApiStatusRequest.none;
   MyCartData myCartData = MyCartData(Get.find());
   CartData cartData = CartData(Get.find());
+
+  TextEditingController? couponController;
 
   List<MyCartModel> myCartList = [];
   var totalPrice = 0.0;
@@ -101,6 +104,7 @@ class MyCartControllerImp extends MyCartController {
   @override
   void onInit() {
     getData();
+    couponController = TextEditingController();
     super.onInit();
   }
 
@@ -115,5 +119,23 @@ class MyCartControllerImp extends MyCartController {
   refreshData() {
     resetVar();
     getData();
+  }
+
+  @override
+  checkCoupon() async {
+    apiStatusRequest = ApiStatusRequest.loading;
+    update();
+    var response = await cartData.couponData(couponController!.text);
+    apiStatusRequest = handlingRemoteData(response);
+    if (apiStatusRequest == ApiStatusRequest.success) {
+      if (response['status'] == "success") {
+        
+      } else {
+        Get.rawSnackbar(
+            title: "warning",
+            message: "this coupon expired or not found",
+            icon: const Icon(Icons.error, color: AppColors.primaryColor));
+      }
+    }
   }
 }
